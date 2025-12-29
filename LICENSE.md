@@ -1,4 +1,4 @@
-# 📄 Licença - Ahgora Tools
+# 📄 Licença - CC BY-NC 4.0
 
 **Copyright © 2025 Delean Mafra**  
 Todos os direitos reservados
@@ -79,4 +79,5 @@ Nossas licenças públicas de direitos autorais incorporam um design único de t
 - Trocar Base Ahgora
 
 © 2025 Delean Mafra - Todos os direitos reservados
+
 

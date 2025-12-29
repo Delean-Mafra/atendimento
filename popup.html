@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--
+  Ahgora Tools - Suite de Ferramentas
+  
+  Copyright © 2025 Delean Mafra
+  Todos os direitos reservados
+  
+  Licença: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+  http://delean-mafra.github.io/Ahtools/CC_BY_NC_4.0
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Delean Mafra">
+    <title>Ahgora Tools</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <h1>🛠️ Ahgora Tools</h1>
+            <p class="subtitle">Suite de Ferramentas</p>
+        </header>
+
+        <!-- Tabs Navigation -->
+        <nav class="tabs-nav">
+            <button class="tab-btn active" data-tab="zendesk">
+                🤖 Auto Chat
+            </button>
+            <button class="tab-btn" data-tab="perfil">
+                🔐 Clonar Perfil
+            </button>
+            <button class="tab-btn" data-tab="ahgora">
+                🔗 Trocar Base
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <div class="tabs-content">
+            <!-- TAB 1: Auto Puxa Chat Zendesk -->
+            <div id="tab-zendesk" class="tab-panel active">
+                <div class="panel-content">
+                    <div class="toggle-container">
+                        <span class="toggle-label">🔔 Notificações</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggleExtension" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="status-box">
+                        <div class="status-item">
+                            <span class="status-label">Notificações:</span>
+                            <span id="status" class="status-value status-active">Ativas</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Status Zendesk:</span>
+                            <span id="statusOnline" class="status-value status-inactive">Verificando...</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">⏱️ Tempo Online:</span>
+                            <span id="tempoOnline" class="status-value">00:00:00</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Chats Ativos:</span>
+                            <span id="chatsAtivos" class="status-value">0/3</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Último click:</span>
+                            <span id="ultimoClick" class="status-value">Nenhum</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Intervalo:</span>
+                            <span id="intervaloAtual" class="status-value">10 minutos</span>
+                        </div>
+                    </div>
+
+                    <div class="security-section" id="securitySectionZendesk">
+                        <label class="security-label">🔐 Código de Segurança:</label>
+                        <input type="text" id="securityCodeZendesk" class="security-input" placeholder="Ex: 1234-ABCD" maxlength="9">
+                        <button id="btnUnlockZendesk" class="btn-security">🔓 Desbloquear Configurações</button>
+                        <div class="security-status" id="securityStatusZendesk">🔒 Configurações bloqueadas</div>
+                    </div>
+
+                    <div class="config-section config-locked" id="intervaloConfig">
+                        <label for="intervaloInput" class="config-label"><span class="lock-icon">🔒</span>⏱️ Configurar Intervalo:</label>
+                        <div class="config-input-group">
+                            <input type="number" id="intervaloInput" min="1" max="60" value="10" class="config-input" disabled>
+                            <span class="config-suffix">min</span>
+                            <button id="salvarIntervalo" class="btn-small" disabled>Salvar</button>
+                        </div>
+                    </div>
+
+                    <div class="config-section config-locked" id="limiteChatsConfig">
+                        <label for="limiteChatsInput" class="config-label"><span class="lock-icon">🔒</span>💬 Limite de Chats:</label>
+                        <div class="config-input-group">
+                            <input type="number" id="limiteChatsInput" min="1" max="10" value="3" class="config-input" disabled>
+                            <span class="config-suffix">chats</span>
+                            <button id="salvarLimiteChats" class="btn-small" disabled>Salvar</button>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="clickNow" class="btn btn-success">Puxar Agora</button>
+                    </div>
+
+                    <div class="info-box">
+                        ℹ️ A extensão <strong>SEMPRE</strong> puxa chats quando você está <strong>ONLINE</strong> e não atingiu o limite.
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Clonar Perfil PontoWeb -->
+            <div id="tab-perfil" class="tab-panel">
+                <div class="panel-content">
+                    <!-- Seção de segurança para clonar perfil -->
+                    <div class="security-section" id="securitySectionPerfil">
+                        <label class="security-label">🔐 Código de Segurança Diário:</label>
+                        <input type="text" id="securityCodePerfil" class="security-input" placeholder="Ex: 1234-ABCD" maxlength="9">
+                        <button id="btnUnlockPerfil" class="btn-security">🔓 Desbloquear Função</button>
+                        <div class="security-status" id="securityStatusPerfil">🔒 Função bloqueada - Insira o código diário</div>
+                    </div>
+
+                    <div id="perfilFunctionContent" class="function-locked">
+                        <div class="section">
+                            <button id="btnDetectar" class="btn btn-primary" disabled>
+                                🔍 Detectar Perfis na Página
+                            </button>
+                        </div>
+
+                        <div id="perfisSection" class="section" style="display: none;">
+                            <div class="form-group">
+                                <label for="perfilOrigem">📋 Perfil de Origem (copiar de):</label>
+                                <select id="perfilOrigem" class="form-control" disabled>
+                                    <option value="">Selecione o perfil de origem...</option>
+                                </select>
+                            </div>
+
+                            <div class="arrow">⬇️</div>
+
+                            <div class="form-group">
+                                <label for="perfilDestino">📝 Perfil de Destino (colar em):</label>
+                                <select id="perfilDestino" class="form-control" disabled>
+                                    <option value="">Selecione o perfil de destino...</option>
+                                </select>
+                            </div>
+
+                            <button id="btnReplicar" class="btn btn-success" disabled>
+                                ✅ Replicar Permissões
+                            </button>
+                        </div>
+
+                        <div id="mensagemPerfil" class="mensagem"></div>
+
+                        <div class="info-box">
+                            <p><strong>ℹ️ Como usar:</strong></p>
+                            <ol>
+                                <li>Insira o código de segurança diário</li>
+                                <li>Clique em "Detectar Perfis"</li>
+                                <li>Selecione origem e destino</li>
+                                <li>Clique em "Replicar Permissões"</li>
+                                <li>Salve as alterações na página!</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Trocar Base Ahgora -->
+            <div id="tab-ahgora" class="tab-panel">
+                <div class="panel-content">
+                    <div class="input-group">
+                        <label for="codigoInput">Digite o código da empresa:</label>
+                        <input type="text" id="codigoInput" class="form-control codigo-input" placeholder="Ex: a393346" autofocus>
+                    </div>
+                    
+                    <button id="confirmarBtn" class="btn btn-primary">Confirmar</button>
+                    
+                    <div class="example-box">
+                        <strong>Exemplos:</strong><br>
+                        • a393346 → https://app.ahgora.com.br/lista_empresas?empresa=a393346
+                    </div>
+
+                    <div class="info-box">
+                        ℹ️ Insira o código da empresa para acessar rapidamente a página de gerenciamento.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 Delean Mafra - Todos os direitos reservados</p>
+            <p>
+                <a href="http://delean-mafra.github.io/Ahtools/CC_BY_NC_4.0" target="_blank">
+                    Licença CC BY-NC 4.0
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

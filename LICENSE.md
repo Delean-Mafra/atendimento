@@ -71,8 +71,6 @@ Nossas licenças públicas de direitos autorais incorporam um design único de t
 2. **Resumo da Licença** — Resumo acessível dos termos principais
 3. **Legível por Máquina** — Metadados para software e mecanismos de busca
 
-Para mais informações sobre a Creative Commons, visite: https://creativecommons.org/
-
 ---
 
 **Ahgora Tools - Suite de Ferramentas**
@@ -81,3 +79,4 @@ Para mais informações sobre a Creative Commons, visite: https://creativecommon
 - Trocar Base Ahgora
 
 © 2025 Delean Mafra - Todos os direitos reservados
+

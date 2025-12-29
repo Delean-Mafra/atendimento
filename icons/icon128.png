@@ -1,0 +1,38 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo gradiente -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Círculo de fundo -->
+  <circle cx="64" cy="64" r="60" fill="url(#grad1)"/>
+  
+  <!-- Ícone de robô/chat -->
+  <g transform="translate(64, 64)">
+    <!-- Cabeça do robô -->
+    <rect x="-25" y="-30" width="50" height="45" rx="8" fill="#ffffff"/>
+    
+    <!-- Olhos -->
+    <circle cx="-12" cy="-15" r="5" fill="#667eea"/>
+    <circle cx="12" cy="-15" r="5" fill="#667eea"/>
+    
+    <!-- Boca/smile -->
+    <path d="M -15,-2 Q 0,5 15,-2" stroke="#667eea" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- Antena -->
+    <line x1="0" y1="-30" x2="0" y2="-40" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="0" cy="-42" r="4" fill="#ffffff"/>
+    
+    <!-- Balão de chat -->
+    <g transform="translate(15, 8)">
+      <rect x="0" y="0" width="20" height="15" rx="3" fill="#28a745"/>
+      <polygon points="0,8 -5,12 0,12" fill="#28a745"/>
+    </g>
+  </g>
+  
+  <!-- Texto pequeno -->
+  <text x="64" y="115" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">AUTO</text>
+</svg>

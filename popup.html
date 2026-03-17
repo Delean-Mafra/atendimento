@@ -31,6 +31,9 @@
             <button class="tab-btn" data-tab="perfil">
                 🔐 Clonar Perfil
             </button>
+            <button class="tab-btn" data-tab="agentes">
+                👥 Agentes
+            </button>
             <button class="tab-btn" data-tab="ahgora">
                 🔗 Trocar Base
             </button>
@@ -86,7 +89,7 @@
                     <div class="config-section config-locked" id="intervaloConfig">
                         <label for="intervaloInput" class="config-label"><span class="lock-icon">🔒</span>⏱️ Configurar Intervalo:</label>
                         <div class="config-input-group">
-                            <input type="number" id="intervaloInput" min="1" max="60" value="10" class="config-input" disabled>
+                            <input type="number" id="intervaloInput" min="1" max="60" value="5" class="config-input" disabled>
                             <span class="config-suffix">min</span>
                             <button id="salvarIntervalo" class="btn-small" disabled>Salvar</button>
                         </div>
@@ -196,6 +199,85 @@
 
                     <div class="info-box">
                         ℹ️ Insira o código da empresa para acessar rapidamente a página de gerenciamento.
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Status Agentes -->
+            <div id="tab-agentes" class="tab-panel">
+                <div class="panel-content">
+                    <div class="agentes-header">
+                        <h3>👥 Status Agentes - Ahgora Geral</h3>
+                        <button id="btnAtualizarAgentes" class="btn btn-small">🔄 Atualizar</button>
+                    </div>
+
+                    <div id="agentesLoading" class="loading-message" style="display: none;">
+                        🔄 Carregando dados dos agentes...
+                    </div>
+
+                    <div id="agentesErro" class="error-message" style="display: none;"></div>
+
+                    <div id="agentesResumo" class="agentes-resumo" style="display: none;">
+                        <div class="resumo-item">
+                            <span class="resumo-icon">👥</span>
+                            <span class="resumo-label">Total:</span>
+                            <span id="totalAgentes" class="resumo-valor">0</span>
+                        </div>
+                        <div class="resumo-item resumo-online">
+                            <span class="resumo-icon">🟢</span>
+                            <span class="resumo-label">Online:</span>
+                            <span id="totalOnline" class="resumo-valor">0</span>
+                        </div>
+                        <div class="resumo-item resumo-ausente">
+                            <span class="resumo-icon">🟡</span>
+                            <span class="resumo-label">Ausente:</span>
+                            <span id="totalAusente" class="resumo-valor">0</span>
+                        </div>
+                        <div class="resumo-item resumo-offline">
+                            <span class="resumo-icon">⚫</span>
+                            <span class="resumo-label">Offline:</span>
+                            <span id="totalOffline" class="resumo-valor">0</span>
+                        </div>
+                    </div>
+
+                    <div id="agentesLista" class="agentes-lista" style="display: none;">
+                        <!-- Online -->
+                        <div class="agentes-grupo">
+                            <div class="grupo-header grupo-online">
+                                <span class="grupo-icon">🟢</span>
+                                <span class="grupo-titulo">ONLINE</span>
+                                <span id="countOnline" class="grupo-count">(0)</span>
+                            </div>
+                            <div id="listaOnline" class="grupo-items"></div>
+                        </div>
+
+                        <!-- Ausente -->
+                        <div class="agentes-grupo">
+                            <div class="grupo-header grupo-ausente">
+                                <span class="grupo-icon">🟡</span>
+                                <span class="grupo-titulo">AUSENTE</span>
+                                <span id="countAusente" class="grupo-count">(0)</span>
+                            </div>
+                            <div id="listaAusente" class="grupo-items"></div>
+                        </div>
+
+                        <!-- Offline -->
+                        <div class="agentes-grupo">
+                            <div class="grupo-header grupo-offline">
+                                <span class="grupo-icon">⚫</span>
+                                <span class="grupo-titulo">OFFLINE</span>
+                                <span id="countOffline" class="grupo-count">(0)</span>
+                            </div>
+                            <div id="listaOffline" class="grupo-items"></div>
+                        </div>
+                    </div>
+
+                    <div id="agentesTimestamp" class="timestamp-info" style="display: none;">
+                        Última atualização: <span id="timestampValor">--:--:--</span>
+                    </div>
+
+                    <div class="info-box">
+                        ℹ️ Esta aba só funciona quando você está na página <strong>https://totvssuporte.zendesk.com/chat/</strong>
                     </div>
                 </div>
             </div>

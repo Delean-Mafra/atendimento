@@ -591,3 +591,218 @@ select::-webkit-scrollbar-thumb {
 select::-webkit-scrollbar-thumb:hover {
     background: #5568d3;
 }
+
+/* ============================================
+   TAB 4: AGENTES - ESTILOS
+   ============================================ */
+
+.agentes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.agentes-header h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #667eea;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error-message {
+    background: #fee;
+    border: 1px solid #fcc;
+    border-radius: 6px;
+    padding: 15px;
+    color: #c33;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.agentes-resumo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.resumo-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+.resumo-item.resumo-online {
+    border-color: #28a745;
+    background: #f0fff4;
+}
+
+.resumo-item.resumo-ausente {
+    border-color: #ffc107;
+    background: #fffbf0;
+}
+
+.resumo-item.resumo-offline {
+    border-color: #6c757d;
+    background: #f8f9fa;
+}
+
+.resumo-icon {
+    font-size: 18px;
+}
+
+.resumo-label {
+    font-size: 12px;
+    color: #666;
+    flex: 1;
+}
+
+.resumo-valor {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.agentes-lista {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.agentes-grupo {
+    margin-bottom: 15px;
+}
+
+.grupo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.grupo-header.grupo-online {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+}
+
+.grupo-header.grupo-ausente {
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+    color: #333;
+}
+
+.grupo-header.grupo-offline {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+}
+
+.grupo-icon {
+    font-size: 16px;
+}
+
+.grupo-titulo {
+    flex: 1;
+    letter-spacing: 0.5px;
+}
+
+.grupo-count {
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.grupo-items {
+    padding-left: 10px;
+}
+
+.agente-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.agente-item:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.1);
+    transform: translateX(3px);
+}
+
+.agente-nome {
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+    flex: 1;
+}
+
+.agente-chats {
+    font-size: 12px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.grupo-items.empty::after {
+    content: "(nenhum agente)";
+    display: block;
+    padding: 10px 12px;
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.timestamp-info {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+#timestampValor {
+    font-weight: 600;
+    color: #667eea;
+}
+
+/* Scrollbar para lista de agentes */
+.agentes-lista::-webkit-scrollbar {
+    width: 6px;
+}
+
+.agentes-lista::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.agentes-lista::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 3px;
+}
+
+.agentes-lista::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}
+

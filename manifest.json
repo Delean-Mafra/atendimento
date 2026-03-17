@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.zendesk.com/*"],
-      "js": ["content-zendesk.js"],
+      "js": ["content-zendesk.js", "content-agentes.js"],
       "run_at": "document_idle"
     },
     {

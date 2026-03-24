@@ -1,129 +1,97 @@
 # 🛠️ Ahgora Tools - Suite de Ferramentas
 
-**Copyright © 2025 Delean Mafra - Todos os direitos reservados**
+**Copyright © 2026 Delean Mafra - Todos os direitos reservados**
 
 [![Licença CC BY-NC 4.0](https://img.shields.io/badge/Licen%C3%A7a-CC%20BY--NC%204.0-lightgrey.svg)](http://delean-mafra.github.io/Ahtools/CC_BY_NC_4.0)
 
-Uma extensão do Chrome que unifica três ferramentas úteis para gerenciamento de atendimento e administração de sistemas Ahgora/Zendesk.
+Uma extensão do Chrome que unifica diversas ferramentas poderosas para otimizar o atendimento no Zendesk e a administração dos sistemas Ahgora (Pontoweb).
 
 ---
 
 ## 📋 Funcionalidades
 
-### 🤖 1. Auto Puxa Chat Zendesk
-Puxa automaticamente conversas da fila do Zendesk com intervalo configurável.
+### 🤖 1. Auto Puxa Chat Zendesk (Aba "Auto Chat")
+Gerenciamento inteligente da fila de chats no Zendesk Chat.
 
 **Recursos:**
-- ✅ Clique automático no botão "Na fila"
-- ✅ Intervalo configurável (1-60 minutos)
-- ✅ Limite de chats simultâneos configurável
-- ✅ Detecção de status online/offline
-- ✅ Cronômetro de tempo online
-- ✅ Toggle para ativar/desativar notificações
-- ✅ Botão para puxar chat manualmente
+- ✅ **Puxada Automática:** Clique automático no botão "Na fila" baseado em intervalo.
+- ✅ **Intervalo Dinâmico:** Configure entre 1 e 60 minutos (requer desbloqueio).
+- ✅ **Limite de Concorrência:** Define quantos chats você deseja manter ativos simultaneamente.
+- ✅ **Status de Conexão:** Monitoramento em tempo real se você está Online/Offline no Zendesk.
+- ✅ **Cronômetro de Produtividade:** Contador de tempo total online na sessão atual.
+- ✅ **Notificações Inteligentes:** Toggle para ativar/desativar alertas sonoros/visuais da extensão.
+- ✅ **Clique Manual Protegido:** Opção de pedir confirmação ao clicar no botão "Na fila" diretamente na página para evitar erros.
+- ✅ **Cópia de Ticket Rápida:** Ao clicar no número do ticket na lista (#12345), copia apenas os dígitos para o clipboard automaticamente.
+- ✅ **Limpeza de Alertas:** Remove automaticamente notificações irritantes do Zendesk como "Horário de operação começou".
 
-### 🔐 2. Clonar Perfil PontoWeb
-Replica permissões entre perfis de usuário de forma dinâmica.
-
-**Recursos:**
-- ✅ Detecção automática de perfis na página
-- ✅ Seleção de perfil de origem e destino
-- ✅ Replicação completa de permissões
-- ✅ Relatório detalhado das alterações
-- ✅ **Proteção por código de segurança diário**
-
-### 🔗 3. Trocar Base Ahgora
-Acesso rápido a diferentes bases de empresas no sistema Ahgora.
+### 👥 2. Status dos Agentes (Aba "Agentes")
+Painel de monitoramento da equipe em tempo real (específico para o grupo "Ahgora - Geral").
 
 **Recursos:**
-- ✅ Campo para digitar código da empresa
-- ✅ Abertura automática da página de gerenciamento
-- ✅ Suporte a tecla Enter para confirmação rápida
+- ✅ **Visão Geral:** Resumo numérico de agentes Online, Ausentes e Offline.
+- ✅ **Lista Detalhada:** Nomes dos agentes agrupados por status.
+- ✅ **Carga de Trabalho:** Visualização de quantos chats cada agente está atendendo no momento (ex: 2/3).
+- ✅ **Atualização Manual:** Botão para recarregar os dados instantaneamente.
+- ⚠️ *Nota: Funciona exclusivamente na página de chat do Zendesk.*
+
+### 🔐 3. Clonar Perfil Pontoweb (Aba "Clonar Perfil")
+Acelera a configuração de permissões no sistema Ahgora Pontoweb.
+
+**Recursos:**
+- ✅ **Detecção Inteligente:** Lê automaticamente todos os perfis de acesso disponíveis na página atual.
+- ✅ **Replicação em Lote:** Selecione um perfil de "Origem" e um de "Destino" para espelhar todas as permissões (checkboxes).
+- ✅ **Relatório de Ação:** Mostra quantas permissões foram marcadas ou desmarcadas após o processo.
+- ✅ **Segurança Avançada:** Função protegida por código CRC-16 diário.
+
+### 🔗 4. Trocar Base Ahgora (Aba "Trocar Base")
+Atalho rápido para alternar entre diferentes ambientes/empresas.
+
+**Recursos:**
+- ✅ **Busca por Código:** Digite o código da empresa (ex: `a393346`) e abra diretamente a página de gerenciamento.
+- ✅ **Agilidade:** Suporte total ao teclado (pressione Enter para confirmar).
 
 ---
 
 ## 🔐 Sistema de Segurança
 
-As funções **Auto Chat** (configurações avançadas) e **Clonar Perfil** são protegidas por um código de segurança diário que utiliza validação CRC-16.
+Para evitar alterações acidentais em configurações críticas e proteger a função de clonagem, utilizamos um sistema de **Código de Segurança Diário**.
 
-### Como funciona o código:
-- O código muda **diariamente** às 00:00
-- Formato: `XXXX-YYYY` (número de 4 dígitos + CRC-16 em hexadecimal)
-- Exemplo: `5678-A1B2`
-
-### Como obter o código:
-O código é gerado através da fórmula baseada na data atual. Para gerar o código do dia, você pode usar o script `gerador_codigo.py` incluído no projeto.
+### Como funciona:
+- **Renovação:** O código expira e muda todos os dias às 00:00.
+- **Formato:** `XXXX-YYYY` (Prefixo numérico + Sufixo Hexadecimal CRC-16).
+- **Validação:** A lógica utiliza o algoritmo CRC-16 (implementado em `crc16.js`) baseado na data atual.
 
 ---
 
 ## 🚀 Instalação
 
 ### Passo 1: Preparar os Arquivos
-Certifique-se de que todos os arquivos estão na pasta:
-- `manifest.json`
-- `popup.html`
-- `popup.js`
-- `popup.css`
-- `content-zendesk.js`
-- `content-perfil.js`
-- `icons/` (pasta com ícones PNG)
+Certifique-se de que a pasta contém a estrutura completa:
+- `manifest.json`, `popup.html`, `popup.js`, `popup.css`
+- Scripts de conteúdo: `content-zendesk.js`, `content-agentes.js`, `content-perfil.js`
+- Lógica: `crc16.js`, `quem_esta_atendendo.js`
+- Pasta `icons/` com os arquivos PNG.
 
-### Passo 2: Instalar no Chrome
-1. Abra o Google Chrome
-2. Digite na barra de endereços: `chrome://extensions/`
-3. Ative o **"Modo do desenvolvedor"** (canto superior direito)
-4. Clique em **"Carregar sem compactação"**
-5. Selecione a pasta do projeto
-6. A extensão será instalada e aparecerá na barra de ferramentas
-
-### Passo 3: Usar a Extensão
-1. Clique no ícone da extensão na barra do Chrome
-2. Use as abas para navegar entre as funcionalidades
-3. Para funções protegidas, insira o código de segurança diário
+### Passo 2: Carregar no Navegador
+1. Acesse `chrome://extensions/` no Chrome/Edge.
+2. Ative o **"Modo do desenvolvedor"**.
+3. Clique em **"Carregar sem compactação"** e escolha a pasta do projeto.
 
 ---
 
-## 📖 Como Usar
-
-### Auto Puxa Chat Zendesk
-1. Acesse a página do Zendesk
-2. A extensão detecta automaticamente se você está online
-3. Chats serão puxados automaticamente no intervalo configurado
-4. Para alterar configurações, desbloqueie com o código diário
-
-### Clonar Perfil PontoWeb
-1. Acesse a página de permissões do PontoWeb
-2. Insira o código de segurança diário
-3. Clique em "Detectar Perfis"
-4. Selecione perfil de origem e destino
-5. Clique em "Replicar Permissões"
-6. **Importante:** Clique em "Salvar" na página!
-
-### Trocar Base Ahgora
-1. Digite o código da empresa (ex: a393346)
-2. Clique em "Confirmar" ou pressione Enter
-3. A página será aberta em uma nova aba
-
----
-
-## 🔧 Estrutura do Projeto
+## 🔧 Estrutura Técnica
 
 ```
 ahgora-tools/
-├── manifest.json           # Configuração da extensão
-├── popup.html              # Interface do popup (3 abas)
-├── popup.js                # Lógica unificada do popup
-├── popup.css               # Estilos unificados
-├── content-zendesk.js      # Script para páginas Zendesk
-├── content-perfil.js       # Script para páginas de perfil
-├── gerador_codigo.py       # Gerador de código de segurança
-├── icons/                  # Ícones da extensão
-│   ├── icon16.png
-│   ├── icon32.png
-│   ├── icon48.png
-│   └── icon128.png
-├── LICENSE.md              # Licença CC BY-NC 4.0
-└── README.md               # Este arquivo
+├── manifest.json           # Manifesto V3 (Permissões e Scripts)
+├── popup.html/js/css       # Interface principal (Tab System)
+├── content-zendesk.js      # Automação e UI no Zendesk Chat
+├── content-agentes.js      # Coleta de dados da equipe no Zendesk
+├── content-perfil.js       # Manipulação de DOM no Pontoweb
+├── crc16.js                # Motor de segurança e validação
+├── quem_esta_atendendo.js  # Script auxiliar de logging
+├── icons/                  # Recursos visuais (16px a 128px)
+└── LICENSE.md              # Licença CC BY-NC 4.0
 ```
 
 ---
@@ -179,13 +147,13 @@ A extensão solicita as seguintes permissões:
 
 **Delean Mafra**
 
-© 2025 - Todos os direitos reservados
+© 2026 - Todos os direitos reservados
 
 ---
 
 ## 📝 Changelog
 
-### v1.0.0 (2025)
+### v2.0.0 (2026)
 - Versão inicial unificando 3 extensões
 - Interface com sistema de abas
 - Sistema de segurança CRC-16 para funções sensíveis

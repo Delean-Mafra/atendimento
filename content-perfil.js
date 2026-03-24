@@ -10,120 +10,243 @@
 
 // Script para detectar perfis e replicar permissões
 
+const _0x5de51f = _0xa649;
+(function (_0x2d7eab, _0x1f02e3) {
+    const _0x4b0e10 = _0xa649, _0x251eb2 = _0x2d7eab();
+    while (!![]) {
+        try {
+            const _0x2595c9 = parseInt(_0x4b0e10(0x11b)) / (0xab9 + -0xc9c * 0x1 + -0x1e4 * -0x1) + -parseInt(_0x4b0e10(0x126)) / (-0x2 * -0x2d7 + 0x24ff + -0x2aab) * (parseInt(_0x4b0e10(0xf5)) / (0x2 * 0x117e + 0x4 * -0x6d1 + -0x7b5)) + parseInt(_0x4b0e10(0xf9)) / (-0x12f2 * -0x2 + -0x1 * -0x13df + -0x39bf) * (parseInt(_0x4b0e10(0x116)) / (-0x764 * 0x4 + -0x2423 + 0x57a * 0xc)) + -parseInt(_0x4b0e10(0xea)) / (-0x1 * -0x1fb7 + -0x5 * 0x3ea + -0xc1f) + -parseInt(_0x4b0e10(0xf8)) / (0x13 * 0xda + -0x1 * -0x20ef + -0x7a * 0x67) + -parseInt(_0x4b0e10(0xd4)) / (0x1 * 0x107c + -0x25ff + 0x158b) + -parseInt(_0x4b0e10(0x109)) / (-0x1056 + 0x50b + -0xb54 * -0x1) * (-parseInt(_0x4b0e10(0x101)) / (-0x18d6 + 0x1c38 + -0x358));
+            if (_0x2595c9 === _0x1f02e3)
+                break;
+            else
+                _0x251eb2['push'](_0x251eb2['shift']());
+        } catch (_0x3c5068) {
+            _0x251eb2['push'](_0x251eb2['shift']());
+        }
+    }
+}(_0x40d6, 0x2 * -0xc39a + -0x1c047 + 0x17c7 * 0x39));
 function detectarPerfis() {
-    const perfis = new Set();
-    
-    const checkboxes = document.querySelectorAll('input[type="checkbox"][value]');
-    
-    checkboxes.forEach(checkbox => {
-        const perfilNome = checkbox.value;
-        if (perfilNome && perfilNome.trim() !== '') {
-            perfis.add(perfilNome);
-        }
-    });
-    
-    return Array.from(perfis).sort();
+    const _0x5731a5 = _0xa649, _0x5b667f = {
+            'RIpGe': function (_0x12d506, _0xce765f) {
+                return _0x12d506 !== _0xce765f;
+            },
+            'PRcRp': _0x5731a5(0xfa) + _0x5731a5(0xf7) + _0x5731a5(0xed)
+        }, _0xf53730 = new Set(), _0x162ffd = document[_0x5731a5(0x114) + _0x5731a5(0xef)](_0x5b667f[_0x5731a5(0xf2)]);
+    return _0x162ffd[_0x5731a5(0xcf)](_0x1e535d => {
+        const _0x5437c5 = _0x5731a5, _0x26fff4 = _0x1e535d[_0x5437c5(0xd8)];
+        _0x26fff4 && _0x5b667f[_0x5437c5(0xfc)](_0x26fff4[_0x5437c5(0xe8)](), '') && _0xf53730[_0x5437c5(0x10b)](_0x26fff4);
+    }), Array[_0x5731a5(0xdd)](_0xf53730)[_0x5731a5(0x11e)]();
 }
-
-function obterIdPerfil(perfilNome) {
-    const checkbox = document.querySelector(`input[type="checkbox"][value="${perfilNome}"]`);
-    if (checkbox && checkbox.id) {
-        const match = checkbox.id.match(/-(\d+)$/);
-        if (match) {
-            return match[1];
-        }
+function obterIdPerfil(_0x305c1e) {
+    const _0x12117e = _0xa649, _0x5492ec = document[_0x12117e(0x114) + _0x12117e(0xca)](_0x12117e(0xfa) + _0x12117e(0xf7) + _0x12117e(0x11f) + _0x305c1e + '\x22]');
+    if (_0x5492ec && _0x5492ec['id']) {
+        const _0x92e0e2 = _0x5492ec['id'][_0x12117e(0x100)](/-(\d+)$/);
+        if (_0x92e0e2)
+            return _0x92e0e2[-0x9 * 0x243 + -0x826 + 0x1 * 0x1c82];
     }
     return null;
 }
-
-function replicarPermissoes(perfilOrigem, perfilDestino) {
-    console.log(`=== Replicando permissões: ${perfilOrigem} -> ${perfilDestino} ===`);
-    
-    const idOrigem = obterIdPerfil(perfilOrigem);
-    const idDestino = obterIdPerfil(perfilDestino);
-    
-    if (!idOrigem) {
-        return {
-            sucesso: false,
-            mensagem: `Perfil de origem "${perfilOrigem}" não encontrado!`
+function replicarPermissoes(_0x38507e, _0x453cc5) {
+    const _0x46d173 = _0xa649, _0x19b272 = {
+            'lBBkX': function (_0x46345a, _0x568e68) {
+                return _0x46345a(_0x568e68);
+            },
+            'ULnei': function (_0x29ada7, _0x2a66cc) {
+                return _0x29ada7(_0x2a66cc);
+            },
+            'NAMuj': function (_0x5b099a, _0x51fc05) {
+                return _0x5b099a === _0x51fc05;
+            },
+            'BuerU': _0x46d173(0xd9) + _0x46d173(0xe7)
         };
-    }
-    
-    if (!idDestino) {
+    console[_0x46d173(0x123)](_0x46d173(0x110) + _0x46d173(0xd2) + _0x46d173(0xf0) + _0x38507e + _0x46d173(0x12d) + _0x453cc5 + _0x46d173(0x113));
+    const _0x1ab6b4 = _0x19b272[_0x46d173(0x10f)](obterIdPerfil, _0x38507e), _0x4262aa = _0x19b272[_0x46d173(0xe1)](obterIdPerfil, _0x453cc5);
+    if (!_0x1ab6b4)
         return {
-            sucesso: false,
-            mensagem: `Perfil de destino "${perfilDestino}" não encontrado!`
+            'sucesso': ![],
+            'mensagem': _0x46d173(0xcd) + _0x46d173(0x129) + _0x38507e + (_0x46d173(0xda) + _0x46d173(0xfb))
         };
-    }
-    
-    console.log(`ID origem: ${idOrigem}, ID destino: ${idDestino}`);
-    
-    const checkboxesOrigem = document.querySelectorAll(`input[type="checkbox"][value="${perfilOrigem}"]`);
-    
-    if (checkboxesOrigem.length === 0) {
+    if (!_0x4262aa)
         return {
-            sucesso: false,
-            mensagem: `Nenhum checkbox do perfil "${perfilOrigem}" encontrado!`
+            'sucesso': ![],
+            'mensagem': _0x46d173(0xcd) + _0x46d173(0x107) + _0x453cc5 + (_0x46d173(0xda) + _0x46d173(0xfb))
         };
-    }
-    
-    console.log(`Total de checkboxes: ${checkboxesOrigem.length}`);
-    
-    let totalProcessados = 0;
-    let totalMarcados = 0;
-    let totalDesmarcados = 0;
-    let erros = 0;
-    
-    checkboxesOrigem.forEach(checkboxOrigem => {
-        const id = checkboxOrigem.id;
-        const idBase = id.replace(`-${idOrigem}`, '');
-        const idCheckboxDestino = `${idBase}-${idDestino}`;
-        
-        const checkboxDestino = document.getElementById(idCheckboxDestino);
-        
-        if (!checkboxDestino) {
-            console.warn(`Checkbox destino não encontrado: ${idCheckboxDestino}`);
-            erros++;
+    console[_0x46d173(0x123)](_0x46d173(0x11a) + '\x20' + _0x1ab6b4 + (_0x46d173(0xcb) + _0x46d173(0x105)) + _0x4262aa);
+    const _0x78a18b = document[_0x46d173(0x114) + _0x46d173(0xef)](_0x46d173(0xfa) + _0x46d173(0xf7) + _0x46d173(0x11f) + _0x38507e + '\x22]');
+    if (_0x19b272[_0x46d173(0xdc)](_0x78a18b[_0x46d173(0xff)], 0x7 * -0x514 + -0xce7 + 0x9d * 0x4f))
+        return {
+            'sucesso': ![],
+            'mensagem': _0x46d173(0x11d) + _0x46d173(0x12c) + _0x46d173(0x10e) + _0x38507e + (_0x46d173(0x127) + _0x46d173(0x10d))
+        };
+    console[_0x46d173(0x123)](_0x46d173(0xe2) + _0x46d173(0xd7) + '\x20' + _0x78a18b[_0x46d173(0xff)]);
+    let _0x3e0a5d = -0x26d4 + 0xd * -0x1dd + -0x3f0d * -0x1, _0x59a8c9 = -0x511 * 0x4 + 0x2bc + 0x1188, _0x1ce1bd = -0x1 * 0x1f1 + -0x624 + -0x815 * -0x1, _0x1b33b2 = 0x3 * 0x1e8 + -0x1124 + 0xb6c;
+    return _0x78a18b[_0x46d173(0xcf)](_0x30a145 => {
+        const _0x127848 = _0x46d173, _0x75b645 = _0x30a145['id'], _0x4ab522 = _0x75b645[_0x127848(0xfd)]('-' + _0x1ab6b4, ''), _0x2ed5f9 = _0x4ab522 + '-' + _0x4262aa, _0x4383a3 = document[_0x127848(0xd1) + _0x127848(0x103)](_0x2ed5f9);
+        if (!_0x4383a3) {
+            console[_0x127848(0x120)](_0x127848(0xec) + _0x127848(0xdb) + _0x127848(0x102) + _0x127848(0x124) + _0x2ed5f9), _0x1b33b2++;
             return;
         }
-        
-        const origemMarcado = checkboxOrigem.checked;
-        
-        if (origemMarcado && !checkboxDestino.checked) {
-            checkboxDestino.checked = true;
-            totalMarcados++;
-            console.log(`✓ Marcado: ${idCheckboxDestino}`);
-        } else if (!origemMarcado && checkboxDestino.checked) {
-            checkboxDestino.checked = false;
-            totalDesmarcados++;
-            console.log(`✗ Desmarcado: ${idCheckboxDestino}`);
-        }
-        
-        totalProcessados++;
-    });
-    
-    console.log('\n=== Resumo ===');
-    console.log(`Processados: ${totalProcessados}, Marcados: ${totalMarcados}, Desmarcados: ${totalDesmarcados}, Erros: ${erros}`);
-    
-    return {
-        sucesso: true,
-        totalProcessados,
-        totalMarcados,
-        totalDesmarcados,
-        erros,
-        mensagem: `Replicação concluída! ${totalMarcados} marcadas, ${totalDesmarcados} desmarcadas.`
+        const _0x16d164 = _0x30a145[_0x127848(0x106)];
+        if (_0x16d164 && !_0x4383a3[_0x127848(0x106)])
+            _0x4383a3[_0x127848(0x106)] = !![], _0x59a8c9++, console[_0x127848(0x123)](_0x127848(0x121) + '\x20' + _0x2ed5f9);
+        else
+            !_0x16d164 && _0x4383a3[_0x127848(0x106)] && (_0x4383a3[_0x127848(0x106)] = ![], _0x1ce1bd++, console[_0x127848(0x123)](_0x127848(0xe6) + _0x127848(0xd5) + _0x2ed5f9));
+        _0x3e0a5d++;
+    }), console[_0x46d173(0x123)](_0x19b272[_0x46d173(0x108)]), console[_0x46d173(0x123)](_0x46d173(0x111) + _0x46d173(0x11c) + _0x3e0a5d + (_0x46d173(0xd0) + ':\x20') + _0x59a8c9 + (_0x46d173(0x12b) + _0x46d173(0xd3)) + _0x1ce1bd + _0x46d173(0xe3) + _0x1b33b2), {
+        'sucesso': !![],
+        'totalProcessados': _0x3e0a5d,
+        'totalMarcados': _0x59a8c9,
+        'totalDesmarcados': _0x1ce1bd,
+        'erros': _0x1b33b2,
+        'mensagem': _0x46d173(0x119) + _0x46d173(0xf1) + '!\x20' + _0x59a8c9 + (_0x46d173(0xfe) + '\x20') + _0x1ce1bd + (_0x46d173(0x12e) + _0x46d173(0xe9))
     };
 }
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'detectarPerfis') {
-        const perfis = detectarPerfis();
-        sendResponse({ perfis });
-    } else if (request.action === 'replicarPermissoes') {
-        const resultado = replicarPermissoes(request.perfilOrigem, request.perfilDestino);
-        sendResponse(resultado);
+function _0x40d6() {
+    const _0x303a83 = [
+        '✓\x20Marcado:',
+        'VKCdc',
+        'log',
+        'o:\x20',
+        '\x20Permissõe',
+        '445780WxGjRs',
+        '\x22\x20encontra',
+        'YZkUK',
+        'origem\x20\x22',
+        's\x20carregad',
+        ',\x20Desmarca',
+        'ckbox\x20do\x20p',
+        '\x20->\x20',
+        '\x20desmarcad',
+        'tor',
+        ',\x20ID\x20desti',
+        'VKjGt',
+        'Perfil\x20de\x20',
+        'runtime',
+        'forEach',
+        ',\x20Marcados',
+        'getElement',
+        'ando\x20permi',
+        'dos:\x20',
+        '520712vxbWPE',
+        'do:\x20',
+        'perfilOrig',
+        'heckboxes:',
+        'value',
+        '\x0a===\x20Resum',
+        '\x22\x20não\x20enco',
+        'estino\x20não',
+        'NAMuj',
+        'from',
+        'ools\x20-\x20Rep',
+        '🔌\x20Ahgora\x20T',
+        'onMessage',
+        'ULnei',
+        'Total\x20de\x20c',
+        ',\x20Erros:\x20',
+        'HJtJg',
+        'QvMdR',
+        '✗\x20Desmarca',
+        'o\x20===',
+        'trim',
+        'as.',
+        '683256uNypwg',
+        'addListene',
+        'Checkbox\x20d',
+        '\x22][value]',
+        'replicarPe',
+        'torAll',
+        'ssões:\x20',
+        '\x20concluída',
+        'PRcRp',
+        'rmissoes',
+        'VqKKw',
+        '3LXViZo',
+        'HPVpW',
+        '=\x22checkbox',
+        '152355tULIiV',
+        '4xauzLf',
+        'input[type',
+        'ntrado!',
+        'RIpGe',
+        'replace',
+        '\x20marcadas,',
+        'length',
+        'match',
+        '2310820WujRsn',
+        '\x20encontrad',
+        'ById',
+        'perfilDest',
+        'no:\x20',
+        'checked',
+        'destino\x20\x22',
+        'BuerU',
+        '9pXnZsC',
+        'licador\x20de',
+        'add',
+        'rfis',
+        'do!',
+        'erfil\x20\x22',
+        'lBBkX',
+        '===\x20Replic',
+        'Processado',
+        'action',
+        '\x20===',
+        'querySelec',
+        'RSziH',
+        '912215wuXzaZ',
+        'detectarPe',
+        'ino',
+        'Replicação',
+        'ID\x20origem:',
+        '142147rAMVyk',
+        's:\x20',
+        'Nenhum\x20che',
+        'sort',
+        '\x22][value=\x22',
+        'warn'
+    ];
+    _0x40d6 = function () {
+        return _0x303a83;
+    };
+    return _0x40d6();
+}
+function _0xa649(_0x4600cd, _0x37ecd9) {
+    _0x4600cd = _0x4600cd - (-0x182 * -0x1 + -0x1 * 0x1d0b + 0x1 * 0x1c53);
+    const _0x1f4d62 = _0x40d6();
+    let _0x1f498d = _0x1f4d62[_0x4600cd];
+    return _0x1f498d;
+}
+chrome[_0x5de51f(0xce)][_0x5de51f(0xe0)][_0x5de51f(0xeb) + 'r']((_0x335720, _0x1268f8, _0x190f7d) => {
+    const _0x5b73b1 = _0x5de51f, _0x2d2d23 = {
+            'VqKKw': function (_0x279d62, _0x13d821) {
+                return _0x279d62 === _0x13d821;
+            },
+            'HPVpW': _0x5b73b1(0x117) + _0x5b73b1(0x10c),
+            'RSziH': function (_0x16d877) {
+                return _0x16d877();
+            },
+            'YZkUK': function (_0x5b49f9, _0x5d3460) {
+                return _0x5b49f9(_0x5d3460);
+            },
+            'HJtJg': function (_0x6c6c34, _0x2d9efb) {
+                return _0x6c6c34 === _0x2d9efb;
+            },
+            'VKjGt': _0x5b73b1(0xee) + _0x5b73b1(0xf3),
+            'QvMdR': function (_0x465e2e, _0x26e63f, _0x248b0d) {
+                return _0x465e2e(_0x26e63f, _0x248b0d);
+            },
+            'VKCdc': function (_0x196523, _0x422c29) {
+                return _0x196523(_0x422c29);
+            }
+        };
+    if (_0x2d2d23[_0x5b73b1(0xf4)](_0x335720[_0x5b73b1(0x112)], _0x2d2d23[_0x5b73b1(0xf6)])) {
+        const _0x209954 = _0x2d2d23[_0x5b73b1(0x115)](detectarPerfis);
+        _0x2d2d23[_0x5b73b1(0x128)](_0x190f7d, { 'perfis': _0x209954 });
+    } else {
+        if (_0x2d2d23[_0x5b73b1(0xe4)](_0x335720[_0x5b73b1(0x112)], _0x2d2d23[_0x5b73b1(0xcc)])) {
+            const _0xc0f48 = _0x2d2d23[_0x5b73b1(0xe5)](replicarPermissoes, _0x335720[_0x5b73b1(0xd6) + 'em'], _0x335720[_0x5b73b1(0x104) + _0x5b73b1(0x118)]);
+            _0x2d2d23[_0x5b73b1(0x122)](_0x190f7d, _0xc0f48);
+        }
     }
-    return true;
-});
-
-console.log('🔌 Ahgora Tools - Replicador de Permissões carregado!');
+    return !![];
+}), console[_0x5de51f(0x123)](_0x5de51f(0xdf) + _0x5de51f(0xde) + _0x5de51f(0x10a) + _0x5de51f(0x125) + _0x5de51f(0x12a) + 'o!');

@@ -1,113 +1,270 @@
 // Script para verificar status dos agentes do grupo "Ahgora - Geral"
-(function() {
-    // Encontra o departamento "Ahgora - Geral"
-    const departamentos = document.querySelectorAll('.meshim_dashboard_components_agentList_Department');
-    let departamentoAhgora = null;
-    
-    for (let dept of departamentos) {
-        const nomeDept = dept.querySelector('.jx_ui_Widget.cell_item')?.[0]?.textContent || 
-                        dept.querySelector('[__jx__id*="__dept_name"]')?.textContent;
-        if (nomeDept && nomeDept.includes('Ahgora - Geral')) {
-            departamentoAhgora = dept;
+(function (_0x32feec, _0x3fcc29) {
+    const _0x30a6bc = _0x25c1, _0x4b62ee = _0x32feec();
+    while (!![]) {
+        try {
+            const _0x30ed8b = -parseInt(_0x30a6bc(0xbe)) / (-0x21c4 + 0x1e65 + 0x60 * 0x9) + parseInt(_0x30a6bc(0xc9)) / (0x808 * -0x4 + 0x61d + 0x1a05) * (-parseInt(_0x30a6bc(0xb3)) / (-0x1dfc + -0xb1b * 0x2 + 0x3435)) + -parseInt(_0x30a6bc(0x106)) / (0x3 * 0x1df + -0x8c8 + 0x5 * 0xa3) * (-parseInt(_0x30a6bc(0x109)) / (0x3d * -0x79 + -0x1227 + -0x23d * -0x15)) + parseInt(_0x30a6bc(0x11a)) / (-0xf4d + -0xfd8 + 0x1f2b) * (-parseInt(_0x30a6bc(0x9c)) / (-0x1 * -0xaf2 + -0xcb * -0x4 + -0xe17)) + parseInt(_0x30a6bc(0xe9)) / (-0x25a * -0xd + -0x11a1 * -0x1 + -0x3b * 0xd1) * (parseInt(_0x30a6bc(0x10c)) / (0x930 + -0x21ac + 0x1885)) + parseInt(_0x30a6bc(0xd8)) / (0x1c * -0x30 + -0xeed + -0xcf * -0x19) + -parseInt(_0x30a6bc(0xce)) / (-0x52f * 0x4 + 0x8a9 + -0x8d * -0x16) * (-parseInt(_0x30a6bc(0xf8)) / (-0x1df6 + -0x4d4 + 0x22d6));
+            if (_0x30ed8b === _0x3fcc29)
+                break;
+            else
+                _0x4b62ee['push'](_0x4b62ee['shift']());
+        } catch (_0x19ed3b) {
+            _0x4b62ee['push'](_0x4b62ee['shift']());
+        }
+    }
+}(_0x41ad, -0x54ab3 * 0x3 + 0x4 * -0x3fb5a + 0x27d225), (function () {
+    const _0x484869 = _0x25c1, _0x40592d = {
+            'CcKpx': _0x484869(0xc4) + _0x484869(0xd2) + _0x484869(0xa1),
+            'tFKfq': _0x484869(0x112) + 'do',
+            'cyEJv': _0x484869(0xd3) + _0x484869(0xeb) + _0x484869(0x101),
+            'XtdyE': _0x484869(0xfb) + 'do',
+            'xdffG': _0x484869(0x105) + _0x484869(0xee),
+            'hvKwN': _0x484869(0xdf),
+            'nkwHp': _0x484869(0x105) + _0x484869(0x119),
+            'FbBVy': _0x484869(0xe7),
+            'eHVJS': _0x484869(0x105) + _0x484869(0x116) + 'e',
+            'Nnonk': _0x484869(0x107),
+            'XmdwB': _0x484869(0xc4) + _0x484869(0xf6) + ']',
+            'IkFkG': _0x484869(0xe5),
+            'ddRSR': function (_0x1912de, _0x553e17) {
+                return _0x1912de === _0x553e17;
+            },
+            'kKmAA': function (_0x5e37e6, _0x4fbd1a) {
+                return _0x5e37e6 === _0x4fbd1a;
+            },
+            'lLVNM': _0x484869(0xb9) + _0x484869(0x113) + _0x484869(0x110) + _0x484869(0xd9) + _0x484869(0xb7),
+            'jgzRu': _0x484869(0xbf) + _0x484869(0xdc) + _0x484869(0xea),
+            'giOBg': _0x484869(0xc4) + _0x484869(0xcf) + _0x484869(0xbc),
+            'nhTjb': _0x484869(0xc0) + _0x484869(0xfc),
+            'FMVIz': _0x484869(0xa7) + _0x484869(0xa4) + _0x484869(0x104) + _0x484869(0x10d) + _0x484869(0xdb),
+            'RpVhJ': _0x484869(0xb9) + _0x484869(0x113) + _0x484869(0x110) + _0x484869(0xb8) + _0x484869(0xa5),
+            'PONUy': _0x484869(0xe4) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xaa),
+            'BSqpr': _0x484869(0xa8) + _0x484869(0xbd) + _0x484869(0x114) + _0x484869(0xa6),
+            'oDFDX': _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xed),
+            'GamVZ': function (_0x477d2f, _0x40eaa6) {
+                return _0x477d2f + _0x40eaa6;
+            },
+            'rQsJz': function (_0x1e0c1b, _0x5925c7) {
+                return _0x1e0c1b + _0x5925c7;
+            },
+            'cWAyx': _0x484869(0xcc),
+            'XDacV': function (_0x5513c5, _0x4d5f3a) {
+                return _0x5513c5 > _0x4d5f3a;
+            },
+            'KFrAt': _0x484869(0xb0) + _0x484869(0xc5) + _0x484869(0x10a),
+            'PVosU': function (_0x5c6dd7, _0x23ff06) {
+                return _0x5c6dd7 + _0x23ff06;
+            },
+            'LtpiY': _0x484869(0xca) + '(',
+            'mLqxz': function (_0x7750a1, _0x1da659) {
+                return _0x7750a1 > _0x1da659;
+            },
+            'weJkb': _0x484869(0xb0) + _0x484869(0xae) + _0x484869(0xde),
+            'IAZlI': function (_0x5d181a, _0x2fde65) {
+                return _0x5d181a + _0x2fde65;
+            },
+            'UFEeB': function (_0x3a8dde, _0x5263cb) {
+                return _0x3a8dde + _0x5263cb;
+            },
+            'Azcrg': _0x484869(0xe1) + _0x484869(0xda) + '(',
+            'YJeff': function (_0x3ace0c, _0xeb97be) {
+                return _0x3ace0c > _0xeb97be;
+            },
+            'loUFM': _0x484869(0xb0) + _0x484869(0xcb) + _0x484869(0xa9),
+            'gLJeN': _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xfe) + _0x484869(0xc2)
+        }, _0x4e6098 = document[_0x484869(0xb6) + _0x484869(0xac)](_0x40592d[_0x484869(0xb5)]);
+    let _0x43e8f6 = null;
+    for (let _0x29e681 of _0x4e6098) {
+        const _0x3208ee = _0x29e681[_0x484869(0xb6) + _0x484869(0x11b)](_0x40592d[_0x484869(0xe2)])?.[0x1d * 0xb3 + 0xd22 + 0x2169 * -0x1]?.[_0x484869(0x108) + 't'] || _0x29e681[_0x484869(0xb6) + _0x484869(0x11b)](_0x40592d[_0x484869(0x118)])?.[_0x484869(0x108) + 't'];
+        if (_0x3208ee && _0x3208ee[_0x484869(0xa2)](_0x40592d[_0x484869(0x103)])) {
+            _0x43e8f6 = _0x29e681;
             break;
         }
     }
-    
-    if (!departamentoAhgora) {
-        console.error('Departamento "Ahgora - Geral" não encontrado!');
+    if (!_0x43e8f6) {
+        console[_0x484869(0xe6)](_0x40592d[_0x484869(0xf4)]);
         return;
     }
-    
-    // Pega todos os agentes do departamento
-    const agentes = departamentoAhgora.querySelectorAll('.meshim_dashboard_components_agentList_widgets_Row');
-    
-    const resultado = {
-        online: [],
-        ausente: [],
-        offline: []
-    };
-    
-    agentes.forEach(agente => {
-        // Pega o nome do agente
-        const nomeElement = agente.querySelector('[__jx__id*="__display_name"]');
-        const nome = nomeElement ? nomeElement.textContent.trim() : 'Desconhecido';
-        
-        // Pega o status do agente
-        const statusElement = agente.querySelector('span[class*="conv_status"]');
-        let status = 'desconhecido';
-        
-        if (statusElement) {
-            if (statusElement.classList.contains('conv_status_online')) {
-                status = 'online';
-            } else if (statusElement.classList.contains('conv_status_away')) {
-                status = 'ausente';
-            } else if (statusElement.classList.contains('conv_status_invisible')) {
-                status = 'offline';
+    const _0x5bd06b = _0x43e8f6[_0x484869(0xb6) + _0x484869(0xac)](_0x40592d[_0x484869(0xd0)]), _0x5368e4 = {
+            'online': [],
+            'ausente': [],
+            'offline': []
+        };
+    return _0x5bd06b[_0x484869(0xad)](_0x57fb40 => {
+        const _0x37b62a = _0x484869, _0x500771 = _0x57fb40[_0x37b62a(0xb6) + _0x37b62a(0x11b)](_0x40592d[_0x37b62a(0xf7)]), _0x5bbcec = _0x500771 ? _0x500771[_0x37b62a(0x108) + 't'][_0x37b62a(0xb1)]() : _0x40592d[_0x37b62a(0xd4)], _0x55e102 = _0x57fb40[_0x37b62a(0xb6) + _0x37b62a(0x11b)](_0x40592d[_0x37b62a(0xab)]);
+        let _0x3df3ad = _0x40592d[_0x37b62a(0xa3)];
+        if (_0x55e102) {
+            if (_0x55e102[_0x37b62a(0xa0)][_0x37b62a(0x9d)](_0x40592d[_0x37b62a(0xc6)]))
+                _0x3df3ad = _0x40592d[_0x37b62a(0x10e)];
+            else {
+                if (_0x55e102[_0x37b62a(0xa0)][_0x37b62a(0x9d)](_0x40592d[_0x37b62a(0x115)]))
+                    _0x3df3ad = _0x40592d[_0x37b62a(0x10f)];
+                else
+                    _0x55e102[_0x37b62a(0xa0)][_0x37b62a(0x9d)](_0x40592d[_0x37b62a(0xe0)]) && (_0x3df3ad = _0x40592d[_0x37b62a(0xef)]);
             }
         }
-        
-        // Pega a quantidade de chats
-        const chatsElement = agente.querySelector('[__jx__id*="__chats"]');
-        const chats = chatsElement ? chatsElement.textContent.trim() : '― / 0';
-        
-        // Adiciona ao resultado
-        const info = {
-            nome: nome,
-            chats: chats
-        };
-        
-        if (status === 'online') {
-            resultado.online.push(info);
-        } else if (status === 'ausente') {
-            resultado.ausente.push(info);
-        } else if (status === 'offline') {
-            resultado.offline.push(info);
+        const _0xa74bfd = _0x57fb40[_0x37b62a(0xb6) + _0x37b62a(0x11b)](_0x40592d[_0x37b62a(0x111)]), _0x274bac = _0xa74bfd ? _0xa74bfd[_0x37b62a(0x108) + 't'][_0x37b62a(0xb1)]() : _0x40592d[_0x37b62a(0xfd)], _0x37e2ec = {
+                'nome': _0x5bbcec,
+                'chats': _0x274bac
+            };
+        if (_0x40592d[_0x37b62a(0xb2)](_0x3df3ad, _0x40592d[_0x37b62a(0x10e)]))
+            _0x5368e4[_0x37b62a(0xdf)][_0x37b62a(0xf1)](_0x37e2ec);
+        else {
+            if (_0x40592d[_0x37b62a(0xf9)](_0x3df3ad, _0x40592d[_0x37b62a(0x10f)]))
+                _0x5368e4[_0x37b62a(0xe7)][_0x37b62a(0xf1)](_0x37e2ec);
+            else
+                _0x40592d[_0x37b62a(0xb2)](_0x3df3ad, _0x40592d[_0x37b62a(0xef)]) && _0x5368e4[_0x37b62a(0x107)][_0x37b62a(0xf1)](_0x37e2ec);
         }
-    });
-    
-    // Exibe o resultado formatado
-    console.log('\n═══════════════════════════════════════════════════════');
-    console.log('           STATUS AGENTES - AHGORA GERAL');
-    console.log('═══════════════════════════════════════════════════════\n');
-    
-    // Online
-    console.log('🟢 ONLINE (' + resultado.online.length + '):');
-    if (resultado.online.length > 0) {
-        resultado.online.forEach(agente => {
-            console.log(`   • ${agente.nome} - Chats: ${agente.chats}`);
-        });
-    } else {
-        console.log('   (nenhum agente online)');
-    }
-    console.log('');
-    
-    // Ausente
-    console.log('🟡 AUSENTE (' + resultado.ausente.length + '):');
-    if (resultado.ausente.length > 0) {
-        resultado.ausente.forEach(agente => {
-            console.log(`   • ${agente.nome} - Chats: ${agente.chats}`);
-        });
-    } else {
-        console.log('   (nenhum agente ausente)');
-    }
-    console.log('');
-    
-    // Offline/Invisível
-    console.log('⚫ OFFLINE/INVISÍVEL (' + resultado.offline.length + '):');
-    if (resultado.offline.length > 0) {
-        resultado.offline.forEach(agente => {
-            console.log(`   • ${agente.nome} - Chats: ${agente.chats}`);
-        });
-    } else {
-        console.log('   (nenhum agente offline)');
-    }
-    console.log('');
-    
-    // Resumo
-    console.log('═══════════════════════════════════════════════════════');
-    console.log(`TOTAL: ${agentes.length} agentes | Online: ${resultado.online.length} | Ausente: ${resultado.ausente.length} | Offline: ${resultado.offline.length}`);
-    console.log('═══════════════════════════════════════════════════════\n');
-    
-    // Retorna o objeto para uso programático se necessário
-    return resultado;
-})();
+    }), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xd1)]), console[_0x484869(0x9f)](_0x40592d[_0x484869(0x100)]), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xc3)]), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xcd)](_0x40592d[_0x484869(0xe8)](_0x40592d[_0x484869(0xd7)], _0x5368e4[_0x484869(0xdf)][_0x484869(0xfa)]), '):')), _0x40592d[_0x484869(0x117)](_0x5368e4[_0x484869(0xdf)][_0x484869(0xfa)], -0x2122 + -0x231c + -0x2 * -0x221f) ? _0x5368e4[_0x484869(0xdf)][_0x484869(0xad)](_0x481ae8 => {
+        const _0x4347b8 = _0x484869;
+        console[_0x4347b8(0x9f)](_0x4347b8(0xf5) + _0x481ae8[_0x4347b8(0xbb)] + _0x4347b8(0xb4) + _0x481ae8[_0x4347b8(0x102)]);
+    }) : console[_0x484869(0x9f)](_0x40592d[_0x484869(0xaf)]), console[_0x484869(0x9f)](''), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xf0)](_0x40592d[_0x484869(0xf0)](_0x40592d[_0x484869(0xc1)], _0x5368e4[_0x484869(0xe7)][_0x484869(0xfa)]), '):')), _0x40592d[_0x484869(0xdd)](_0x5368e4[_0x484869(0xe7)][_0x484869(0xfa)], -0x9 * -0x91 + 0x1167 + -0x1680) ? _0x5368e4[_0x484869(0xe7)][_0x484869(0xad)](_0x45ce13 => {
+        const _0x4dfe08 = _0x484869;
+        console[_0x4dfe08(0x9f)](_0x4dfe08(0xf5) + _0x45ce13[_0x4dfe08(0xbb)] + _0x4dfe08(0xb4) + _0x45ce13[_0x4dfe08(0x102)]);
+    }) : console[_0x484869(0x9f)](_0x40592d[_0x484869(0xe3)]), console[_0x484869(0x9f)](''), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xba)](_0x40592d[_0x484869(0xd5)](_0x40592d[_0x484869(0xf3)], _0x5368e4[_0x484869(0x107)][_0x484869(0xfa)]), '):')), _0x40592d[_0x484869(0x9e)](_0x5368e4[_0x484869(0x107)][_0x484869(0xfa)], -0xe * -0x14b + 0x790 + -0x19aa) ? _0x5368e4[_0x484869(0x107)][_0x484869(0xad)](_0x3976e6 => {
+        const _0x4515a4 = _0x484869;
+        console[_0x4515a4(0x9f)](_0x4515a4(0xf5) + _0x3976e6[_0x4515a4(0xbb)] + _0x4515a4(0xb4) + _0x3976e6[_0x4515a4(0x102)]);
+    }) : console[_0x484869(0x9f)](_0x40592d[_0x484869(0xf2)]), console[_0x484869(0x9f)](''), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xd6)]), console[_0x484869(0x9f)](_0x484869(0xec) + _0x5bd06b[_0x484869(0xfa)] + (_0x484869(0xc7) + _0x484869(0x10b)) + _0x5368e4[_0x484869(0xdf)][_0x484869(0xfa)] + (_0x484869(0xff) + ':\x20') + _0x5368e4[_0x484869(0xe7)][_0x484869(0xfa)] + (_0x484869(0xc8) + ':\x20') + _0x5368e4[_0x484869(0x107)][_0x484869(0xfa)]), console[_0x484869(0x9f)](_0x40592d[_0x484869(0xc3)]), _0x5368e4;
+}()));
+function _0x25c1(_0x1f50a6, _0x1a5552) {
+    _0x1f50a6 = _0x1f50a6 - (-0xa * 0x32c + 0x22db * -0x1 + 0x432f);
+    const _0x3e0d9b = _0x41ad();
+    let _0x1d6260 = _0x3e0d9b[_0x1f50a6];
+    return _0x1d6260;
+}
+function _0x41ad() {
+    const _0x4f9f4c = [
+        'ausente',
+        'rQsJz',
+        '1331312VcCkfT',
+        'tem',
+        '*=\x22conv_st',
+        'TOTAL:\x20',
+        '═════\x0a',
+        's_online',
+        'Nnonk',
+        'PVosU',
+        'push',
+        'loUFM',
+        'Azcrg',
+        'FMVIz',
+        '\x20\x20\x20•\x20',
+        '=\x22__chats\x22',
+        'CcKpx',
+        '24SAixiv',
+        'kKmAA',
+        'length',
+        'desconheci',
+        'eral',
+        'IkFkG',
+        '══════════',
+        '\x20|\x20Ausente',
+        'BSqpr',
+        'atus\x22]',
+        'chats',
+        'nhTjb',
+        '\x20-\x20Geral\x22\x20',
+        'conv_statu',
+        '8FFWWKs',
+        'offline',
+        'textConten',
+        '106510VEiyOW',
+        'line)',
+        '\x20Online:\x20',
+        '36nqaLrL',
+        'não\x20encont',
+        'hvKwN',
+        'FbBVy',
+        'mponents_a',
+        'XmdwB',
+        'Desconheci',
+        'shboard_co',
+        'ENTES\x20-\x20AH',
+        'nkwHp',
+        's_invisibl',
+        'XDacV',
+        'giOBg',
+        's_away',
+        '369582gpDvCD',
+        'tor',
+        '98RYmmQp',
+        'contains',
+        'YJeff',
+        'log',
+        'classList',
+        'y_name\x22]',
+        'includes',
+        'XtdyE',
+        'to\x20\x22Ahgora',
+        'idgets_Row',
+        'GORA\x20GERAL',
+        'Departamen',
+        '\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'fline)',
+        '══════',
+        'cyEJv',
+        'torAll',
+        'forEach',
+        '\x20agente\x20au',
+        'KFrAt',
+        '\x20\x20\x20(nenhum',
+        'trim',
+        'ddRSR',
+        '15VdGgRR',
+        '\x20-\x20Chats:\x20',
+        'lLVNM',
+        'querySelec',
+        'epartment',
+        'gentList_w',
+        '.meshim_da',
+        'IAZlI',
+        'nome',
+        'ame\x22]',
+        '\x20STATUS\x20AG',
+        '710952EchaUj',
+        '.jx_ui_Wid',
+        'Ahgora\x20-\x20G',
+        'LtpiY',
+        '═════',
+        'oDFDX',
+        '[__jx__id*',
+        '\x20agente\x20on',
+        'xdffG',
+        '\x20agentes\x20|',
+        '\x20|\x20Offline',
+        '57282rFEuWC',
+        '🟡\x20AUSENTE\x20',
+        '\x20agente\x20of',
+        '🟢\x20ONLINE\x20(',
+        'GamVZ',
+        '6822948jdqrWo',
+        '=\x22__dept_n',
+        'RpVhJ',
+        'PONUy',
+        '=\x22__displa',
+        'span[class',
+        'tFKfq',
+        'UFEeB',
+        'gLJeN',
+        'cWAyx',
+        '2931950DoMvqB',
+        'gentList_D',
+        'INVISÍVEL\x20',
+        'rado!',
+        'get.cell_i',
+        'mLqxz',
+        'sente)',
+        'online',
+        'eHVJS',
+        '⚫\x20OFFLINE/',
+        'jgzRu',
+        'weJkb',
+        '\x0a═════════',
+        '―\x20/\x200',
+        'error'
+    ];
+    _0x41ad = function () {
+        return _0x4f9f4c;
+    };
+    return _0x41ad();
+}

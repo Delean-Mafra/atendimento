@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.zendesk.com/*"],
-      "js": ["license-config.js", "content-zendesk.js", "content-agentes.js", "content-ahtools-sidebar.js"],
+      "js": ["license-config.js", "content-zendesk.js", "content-agentes.js", "content-ahtools-sidebar.js", "content-ahgora-search.js"],
       "run_at": "document_idle"
     },
     {

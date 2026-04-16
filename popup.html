@@ -127,6 +127,17 @@
                         ℹ️ Quando ativo, ao clicar no número do ticket na lista, copia apenas o número (sem #) e não abre o ticket.
                     </div>
 
+                    <div class="toggle-container" style="margin-top: 10px; background: #e3f2fd;">
+                        <span class="toggle-label">🛠️ Mostrar balão Ahtools</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggleMostrarFAB" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="info-box" style="background: #e3f2fd; color: #1565c0; border-left-color: #1976d2; margin-top: 5px; font-size: 10px;">
+                        ℹ️ Quando ativo, exibe o botão flutuante (balão) para abrir o Ahtools em qualquer página.
+                    </div>
+
                     <div class="button-group">
                         <button id="clickNow" class="btn btn-success">Puxar Agora</button>
                     </div>
@@ -302,8 +313,57 @@
                 </a>
             </p>
         </footer>
+
+        <!-- Modal Licença Expirada -->
+        <div id="licenseExpiredModal" class="license-modal-overlay" style="display: none;">
+            <div class="license-modal-container">
+                <div class="license-modal-content">
+                    <div class="license-modal-icon">⚠️</div>
+                    <h2 class="license-modal-title">Extensão Desatualizada</h2>
+                    <p class="license-modal-message">
+                        A licença de uso desta extensão expirou em <strong id="expirationDateDisplay">31/12/2030</strong>.
+                    </p>
+                    <p class="license-modal-submessage">
+                        Favor atualizar para a versão mais recente.
+                    </p>
+                    <button id="closeLicenseModal" class="btn btn-primary">Entendi</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Ahtools desativada - agora usamos sidebar na página -->
+        <!-- Se quiser ativar novamente, descomente as linhas abaixo -->
+        <!--
+        <div id="ahtoolsModal" class="ahtools-modal-overlay">
+            <div class="ahtools-modal-container">
+                <div class="ahtools-modal-header">
+                    <div class="modal-header-content">
+                        <div class="modal-title-group">
+                            <h2 class="modal-title">🛠️ Ahtools</h2>
+                            <p class="modal-subtitle">Ferramentas Auxiliares</p>
+                        </div>
+                    </div>
+                    <button id="closeAhtoolsModal" class="modal-close-btn" aria-label="Fechar">
+                        <span>✕</span>
+                    </button>
+                </div>
+
+                <div class="ahtools-modal-content">
+                    <iframe 
+                        id="ahtoolsIframe" 
+                        class="ahtools-iframe"
+                        src="https://delean-mafra.github.io/Ahtools/"
+                        title="Ahtools - Suite de Ferramentas"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        -->
     </div>
 
+    <script src="license-config.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>

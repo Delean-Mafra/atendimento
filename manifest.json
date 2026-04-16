@@ -17,12 +17,12 @@
   "content_scripts": [
     {
       "matches": ["*://*.zendesk.com/*"],
-      "js": ["content-zendesk.js", "content-agentes.js"],
+      "js": ["license-config.js", "content-zendesk.js", "content-agentes.js", "content-ahtools-sidebar.js"],
       "run_at": "document_idle"
     },
     {
       "matches": ["*://*.ahgora.com.br/*", "<all_urls>"],
-      "js": ["content-perfil.js"],
+      "js": ["license-config.js", "content-perfil.js", "content-ahtools-sidebar.js"],
       "run_at": "document_idle"
     }
   ],

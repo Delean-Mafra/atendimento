@@ -1,253 +1,113 @@
-function _0x4886(_0x2c7326, _0x234f37) {
-    _0x2c7326 = _0x2c7326 - (0x58f + -0x21 * 0x93 + 0xf0a);
-    const _0x423e78 = _0x22d8();
-    let _0x3a3ec0 = _0x423e78[_0x2c7326];
-    return _0x3a3ec0;
-}
-function _0x22d8() {
-    const _0x4766a0 = [
-        'TOTAL:\x20',
-        'aJUpb',
-        '―\x20/\x200',
-        'classList',
-        'line)',
-        'iBxZT',
-        'canAr',
-        'ausente',
-        'atus\x22]',
-        'jjaHZ',
-        'error',
-        'mbtYz',
-        'eiwnt',
-        'querySelec',
-        'fline)',
-        'FMkIQ',
-        '11455787MmchYM',
-        '\x20agentes\x20|',
-        'ENTES\x20-\x20AH',
-        's_online',
-        'pUXcC',
-        'online',
-        'FoyqN',
-        'sente)',
-        'Desconheci',
-        '══════════',
-        'nome',
-        'svuPM',
-        'gCHPX',
-        'ErdYE',
-        '[__jx__id*',
-        'eGCJB',
-        '=\x22__displa',
-        '\x20\x20\x20•\x20',
-        'FgeXc',
-        'tem',
-        '\x20|\x20Offline',
-        '1811806SjgiGG',
-        '\x20agente\x20au',
-        'gentList_D',
-        's_away',
-        '\x0a═════════',
-        '7460344auaImf',
-        'DAnVV',
-        '\x20\x20\x20(nenhum',
-        'rBAXa',
-        'span[class',
-        '\x20-\x20Chats:\x20',
-        'torAll',
-        'eekPF',
-        '🟡\x20AUSENTE\x20',
-        'Departamen',
-        '.jx_ui_Wid',
-        '1428840ELGgnL',
-        'to\x20\x22Ahgora',
-        'textConten',
-        'bjmLj',
-        '═════\x0a',
-        '\x20|\x20Ausente',
-        '\x20STATUS\x20AG',
-        'QqPBX',
-        'conv_statu',
-        'chats',
-        'cZuzx',
-        'FgPWl',
-        '\x20-\x20Geral\x22\x20',
-        '10KyqKne',
-        'push',
-        'QoaRF',
-        'shboard_co',
-        '*=\x22conv_st',
-        'uSiPl',
-        'mponents_a',
-        'qmHkm',
-        'offline',
-        'eral',
-        '\x20agente\x20of',
-        '⚫\x20OFFLINE/',
-        'epartment',
-        'Ahgora\x20-\x20G',
-        'log',
-        'Pmbhg',
-        'GORA\x20GERAL',
-        'get.cell_i',
-        '3324987vSWKAl',
-        '🟢\x20ONLINE\x20(',
-        'iIUip',
-        'rado!',
-        'gentList_w',
-        'y_name\x22]',
-        '\x20agente\x20on',
-        '══════',
-        'ymcbn',
-        'trim',
-        'includes',
-        'tKcNU',
-        'IRpDB',
-        '\x20Online:\x20',
-        '=\x22__chats\x22',
-        '═════',
-        'forEach',
-        '.meshim_da',
-        'ame\x22]',
-        '=\x22__dept_n',
-        '\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
-        'JjZHY',
-        'contains',
-        'JHBXr',
-        's_invisibl',
-        'kMvAH',
-        'tor',
-        'não\x20encont',
-        'qvRaK',
-        'FVmUo',
-        '3310772yITRRM',
-        'idgets_Row',
-        'INVISÍVEL\x20',
-        'desconheci',
-        'WrsoL',
-        '8506482OfjqXZ',
-        'length'
-    ];
-    _0x22d8 = function () {
-        return _0x4766a0;
-    };
-    return _0x22d8();
-}
-(function (_0x59f1bd, _0x584f1a) {
-    const _0x42f933 = _0x4886, _0x56ffaa = _0x59f1bd();
-    while (!![]) {
-        try {
-            const _0x5c6d15 = -parseInt(_0x42f933(0x1d8)) / (0x11fd + 0x382 * -0x6 + 0x310) + -parseInt(_0x42f933(0x1e8)) / (-0x8b5 * -0x3 + 0x8 * 0x35f + 0x7f * -0x6b) + parseInt(_0x42f933(0x207)) / (-0xc49 + -0xb1 * 0x16 + 0x2 * 0xdc1) + parseInt(_0x42f933(0x1ac)) / (0x17e4 + -0x33 * -0x99 + -0x1 * 0x365b) * (parseInt(_0x42f933(0x1f5)) / (0x1 * -0x1d63 + 0x1 * -0x1c66 + -0x97 * -0x62)) + parseInt(_0x42f933(0x1b1)) / (0x1187 + -0x95 * -0x8 + -0x1629) + -parseInt(_0x42f933(0x1c3)) / (-0x15 * 0xa1 + 0x5 * -0x577 + 0xd85 * 0x3) + parseInt(_0x42f933(0x1dd)) / (0x1 * -0x1777 + -0x11b3 + 0x2932);
-            if (_0x5c6d15 === _0x584f1a)
-                break;
-            else
-                _0x56ffaa['push'](_0x56ffaa['shift']());
-        } catch (_0x1071f3) {
-            _0x56ffaa['push'](_0x56ffaa['shift']());
-        }
-    }
-}(_0x22d8, 0x1 * 0x2c947 + 0x152807 + 0x1735 * -0x68), (function () {
-    const _0x4c10a3 = _0x4886, _0x2343f8 = {
-            'WrsoL': _0x4c10a3(0x1d1) + _0x4c10a3(0x1d3) + _0x4c10a3(0x20c),
-            'FVmUo': _0x4c10a3(0x1cb) + 'do',
-            'ymcbn': _0x4c10a3(0x1e1) + _0x4c10a3(0x1f9) + _0x4c10a3(0x1bb),
-            'qmHkm': _0x4c10a3(0x1af) + 'do',
-            'canAr': _0x4c10a3(0x1f0) + _0x4c10a3(0x1c6),
-            'iBxZT': _0x4c10a3(0x1c8),
-            'JHBXr': _0x4c10a3(0x1f0) + _0x4c10a3(0x1db),
-            'kMvAH': _0x4c10a3(0x1ba),
-            'FoyqN': _0x4c10a3(0x1f0) + _0x4c10a3(0x1a6) + 'e',
-            'jjaHZ': _0x4c10a3(0x1fd),
-            'uSiPl': _0x4c10a3(0x1d1) + _0x4c10a3(0x215) + ']',
-            'ErdYE': _0x4c10a3(0x1b5),
-            'bjmLj': function (_0xf3dd05, _0xa53d38) {
-                return _0xf3dd05 === _0xa53d38;
-            },
-            'aJUpb': _0x4c10a3(0x218) + _0x4c10a3(0x1f8) + _0x4c10a3(0x1fb) + _0x4c10a3(0x1da) + _0x4c10a3(0x201),
-            'cZuzx': _0x4c10a3(0x1e7) + _0x4c10a3(0x206) + _0x4c10a3(0x1d6),
-            'DAnVV': _0x4c10a3(0x1d1) + _0x4c10a3(0x21a) + _0x4c10a3(0x219),
-            'mbtYz': _0x4c10a3(0x202) + _0x4c10a3(0x1fe),
-            'QqPBX': _0x4c10a3(0x1e6) + _0x4c10a3(0x1e9) + _0x4c10a3(0x1f4) + _0x4c10a3(0x1a9) + _0x4c10a3(0x20a),
-            'eekPF': _0x4c10a3(0x218) + _0x4c10a3(0x1f8) + _0x4c10a3(0x1fb) + _0x4c10a3(0x20b) + _0x4c10a3(0x1ad),
-            'tKcNU': _0x4c10a3(0x1dc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x20e),
-            'eGCJB': _0x4c10a3(0x21b) + _0x4c10a3(0x1ee) + _0x4c10a3(0x1c5) + _0x4c10a3(0x205),
-            'rBAXa': _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1ec),
-            'FMkIQ': function (_0x50753b, _0x5bb695) {
-                return _0x50753b + _0x5bb695;
-            },
-            'JjZHY': function (_0xef82f0, _0x29b9fc) {
-                return _0xef82f0 + _0x29b9fc;
-            },
-            'eiwnt': _0x4c10a3(0x208),
-            'FgeXc': function (_0x457f4a, _0x2bff64) {
-                return _0x457f4a > _0x2bff64;
-            },
-            'qvRaK': _0x4c10a3(0x1df) + _0x4c10a3(0x20d) + _0x4c10a3(0x1b7),
-            'IRpDB': function (_0x3723bc, _0x434c25) {
-                return _0x3723bc + _0x434c25;
-            },
-            'pUXcC': _0x4c10a3(0x1e5) + '(',
-            'QoaRF': function (_0x46d4b0, _0x4f0b4d) {
-                return _0x46d4b0 > _0x4f0b4d;
-            },
-            'gCHPX': _0x4c10a3(0x1df) + _0x4c10a3(0x1d9) + _0x4c10a3(0x1ca),
-            'Pmbhg': function (_0x25abcf, _0x222fa8) {
-                return _0x25abcf + _0x222fa8;
-            },
-            'svuPM': _0x4c10a3(0x200) + _0x4c10a3(0x1ae) + '(',
-            'FgPWl': _0x4c10a3(0x1df) + _0x4c10a3(0x1ff) + _0x4c10a3(0x1c1),
-            'iIUip': _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x1cc) + _0x4c10a3(0x216)
-        }, _0x2bce71 = document[_0x4c10a3(0x1c0) + _0x4c10a3(0x1e3)](_0x2343f8[_0x4c10a3(0x1b4)]);
-    let _0x13a552 = null;
-    for (let _0x319e10 of _0x2bce71) {
-        const _0x1fc630 = _0x319e10[_0x4c10a3(0x1c0) + _0x4c10a3(0x1a8)](_0x2343f8[_0x4c10a3(0x1f2)])?.[0x1b73 + -0xcb3 * -0x1 + 0x9 * -0x476]?.[_0x4c10a3(0x1ea) + 't'] || _0x319e10[_0x4c10a3(0x1c0) + _0x4c10a3(0x1a8)](_0x2343f8[_0x4c10a3(0x1de)])?.[_0x4c10a3(0x1ea) + 't'];
-        if (_0x1fc630 && _0x1fc630[_0x4c10a3(0x211)](_0x2343f8[_0x4c10a3(0x1be)])) {
-            _0x13a552 = _0x319e10;
+// Script para verificar status dos agentes do grupo "Ahgora - Geral"
+(function() {
+    // Encontra o departamento "Ahgora - Geral"
+    const departamentos = document.querySelectorAll('.meshim_dashboard_components_agentList_Department');
+    let departamentoAhgora = null;
+    
+    for (let dept of departamentos) {
+        const nomeDept = dept.querySelector('.jx_ui_Widget.cell_item')?.[0]?.textContent || 
+                        dept.querySelector('[__jx__id*="__dept_name"]')?.textContent;
+        if (nomeDept && nomeDept.includes('Ahgora - Geral')) {
+            departamentoAhgora = dept;
             break;
         }
     }
-    if (!_0x13a552) {
-        console[_0x4c10a3(0x1bd)](_0x2343f8[_0x4c10a3(0x1ef)]);
+    
+    if (!departamentoAhgora) {
+        console.error('Departamento "Ahgora - Geral" não encontrado!');
         return;
     }
-    const _0x299e6b = _0x13a552[_0x4c10a3(0x1c0) + _0x4c10a3(0x1e3)](_0x2343f8[_0x4c10a3(0x1e4)]), _0x20a1fc = {
-            'online': [],
-            'ausente': [],
-            'offline': []
-        };
-    return _0x299e6b[_0x4c10a3(0x217)](_0x4589fa => {
-        const _0x42ed34 = _0x4c10a3, _0x27effa = _0x4589fa[_0x42ed34(0x1c0) + _0x42ed34(0x1a8)](_0x2343f8[_0x42ed34(0x1b0)]), _0x34df84 = _0x27effa ? _0x27effa[_0x42ed34(0x1ea) + 't'][_0x42ed34(0x210)]() : _0x2343f8[_0x42ed34(0x1ab)], _0x4ec865 = _0x4589fa[_0x42ed34(0x1c0) + _0x42ed34(0x1a8)](_0x2343f8[_0x42ed34(0x20f)]);
-        let _0xea03be = _0x2343f8[_0x42ed34(0x1fc)];
-        if (_0x4ec865) {
-            if (_0x4ec865[_0x42ed34(0x1b6)][_0x42ed34(0x21d)](_0x2343f8[_0x42ed34(0x1b9)]))
-                _0xea03be = _0x2343f8[_0x42ed34(0x1b8)];
-            else {
-                if (_0x4ec865[_0x42ed34(0x1b6)][_0x42ed34(0x21d)](_0x2343f8[_0x42ed34(0x21e)]))
-                    _0xea03be = _0x2343f8[_0x42ed34(0x1a7)];
-                else
-                    _0x4ec865[_0x42ed34(0x1b6)][_0x42ed34(0x21d)](_0x2343f8[_0x42ed34(0x1c9)]) && (_0xea03be = _0x2343f8[_0x42ed34(0x1bc)]);
+    
+    // Pega todos os agentes do departamento
+    const agentes = departamentoAhgora.querySelectorAll('.meshim_dashboard_components_agentList_widgets_Row');
+    
+    const resultado = {
+        online: [],
+        ausente: [],
+        offline: []
+    };
+    
+    agentes.forEach(agente => {
+        // Pega o nome do agente
+        const nomeElement = agente.querySelector('[__jx__id*="__display_name"]');
+        const nome = nomeElement ? nomeElement.textContent.trim() : 'Desconhecido';
+        
+        // Pega o status do agente
+        const statusElement = agente.querySelector('span[class*="conv_status"]');
+        let status = 'desconhecido';
+        
+        if (statusElement) {
+            if (statusElement.classList.contains('conv_status_online')) {
+                status = 'online';
+            } else if (statusElement.classList.contains('conv_status_away')) {
+                status = 'ausente';
+            } else if (statusElement.classList.contains('conv_status_invisible')) {
+                status = 'offline';
             }
         }
-        const _0xd20b5f = _0x4589fa[_0x42ed34(0x1c0) + _0x42ed34(0x1a8)](_0x2343f8[_0x42ed34(0x1fa)]), _0x54e7ad = _0xd20b5f ? _0xd20b5f[_0x42ed34(0x1ea) + 't'][_0x42ed34(0x210)]() : _0x2343f8[_0x42ed34(0x1d0)], _0x1bc966 = {
-                'nome': _0x34df84,
-                'chats': _0x54e7ad
-            };
-        if (_0x2343f8[_0x42ed34(0x1eb)](_0xea03be, _0x2343f8[_0x42ed34(0x1b8)]))
-            _0x20a1fc[_0x42ed34(0x1c8)][_0x42ed34(0x1f6)](_0x1bc966);
-        else {
-            if (_0x2343f8[_0x42ed34(0x1eb)](_0xea03be, _0x2343f8[_0x42ed34(0x1a7)]))
-                _0x20a1fc[_0x42ed34(0x1ba)][_0x42ed34(0x1f6)](_0x1bc966);
-            else
-                _0x2343f8[_0x42ed34(0x1eb)](_0xea03be, _0x2343f8[_0x42ed34(0x1bc)]) && _0x20a1fc[_0x42ed34(0x1fd)][_0x42ed34(0x1f6)](_0x1bc966);
+        
+        // Pega a quantidade de chats
+        const chatsElement = agente.querySelector('[__jx__id*="__chats"]');
+        const chats = chatsElement ? chatsElement.textContent.trim() : '― / 0';
+        
+        // Adiciona ao resultado
+        const info = {
+            nome: nome,
+            chats: chats
+        };
+        
+        if (status === 'online') {
+            resultado.online.push(info);
+        } else if (status === 'ausente') {
+            resultado.ausente.push(info);
+        } else if (status === 'offline') {
+            resultado.offline.push(info);
         }
-    }), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x212)]), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1d2)]), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1e0)]), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1c2)](_0x2343f8[_0x4c10a3(0x21c)](_0x2343f8[_0x4c10a3(0x1bf)], _0x20a1fc[_0x4c10a3(0x1c8)][_0x4c10a3(0x1b2)]), '):')), _0x2343f8[_0x4c10a3(0x1d5)](_0x20a1fc[_0x4c10a3(0x1c8)][_0x4c10a3(0x1b2)], 0x1555 + -0xe98 + -0x5 * 0x159) ? _0x20a1fc[_0x4c10a3(0x1c8)][_0x4c10a3(0x217)](_0x56dd4c => {
-        const _0x274131 = _0x4c10a3;
-        console[_0x274131(0x203)](_0x274131(0x1d4) + _0x56dd4c[_0x274131(0x1cd)] + _0x274131(0x1e2) + _0x56dd4c[_0x274131(0x1f1)]);
-    }) : console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1aa)]), console[_0x4c10a3(0x203)](''), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x213)](_0x2343f8[_0x4c10a3(0x213)](_0x2343f8[_0x4c10a3(0x1c7)], _0x20a1fc[_0x4c10a3(0x1ba)][_0x4c10a3(0x1b2)]), '):')), _0x2343f8[_0x4c10a3(0x1f7)](_0x20a1fc[_0x4c10a3(0x1ba)][_0x4c10a3(0x1b2)], 0xbc + 0x2697 + -0x2753) ? _0x20a1fc[_0x4c10a3(0x1ba)][_0x4c10a3(0x217)](_0x1c7f62 => {
-        const _0x413940 = _0x4c10a3;
-        console[_0x413940(0x203)](_0x413940(0x1d4) + _0x1c7f62[_0x413940(0x1cd)] + _0x413940(0x1e2) + _0x1c7f62[_0x413940(0x1f1)]);
-    }) : console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1cf)]), console[_0x4c10a3(0x203)](''), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x213)](_0x2343f8[_0x4c10a3(0x204)](_0x2343f8[_0x4c10a3(0x1ce)], _0x20a1fc[_0x4c10a3(0x1fd)][_0x4c10a3(0x1b2)]), '):')), _0x2343f8[_0x4c10a3(0x1f7)](_0x20a1fc[_0x4c10a3(0x1fd)][_0x4c10a3(0x1b2)], -0x1ef6 + -0x225c + 0x4152) ? _0x20a1fc[_0x4c10a3(0x1fd)][_0x4c10a3(0x217)](_0x51ba41 => {
-        const _0x2dc46c = _0x4c10a3;
-        console[_0x2dc46c(0x203)](_0x2dc46c(0x1d4) + _0x51ba41[_0x2dc46c(0x1cd)] + _0x2dc46c(0x1e2) + _0x51ba41[_0x2dc46c(0x1f1)]);
-    }) : console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1f3)]), console[_0x4c10a3(0x203)](''), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x209)]), console[_0x4c10a3(0x203)](_0x4c10a3(0x1b3) + _0x299e6b[_0x4c10a3(0x1b2)] + (_0x4c10a3(0x1c4) + _0x4c10a3(0x214)) + _0x20a1fc[_0x4c10a3(0x1c8)][_0x4c10a3(0x1b2)] + (_0x4c10a3(0x1ed) + ':\x20') + _0x20a1fc[_0x4c10a3(0x1ba)][_0x4c10a3(0x1b2)] + (_0x4c10a3(0x1d7) + ':\x20') + _0x20a1fc[_0x4c10a3(0x1fd)][_0x4c10a3(0x1b2)]), console[_0x4c10a3(0x203)](_0x2343f8[_0x4c10a3(0x1e0)]), _0x20a1fc;
-}()));
+    });
+    
+    // Exibe o resultado formatado
+    console.log('\n═══════════════════════════════════════════════════════');
+    console.log('           STATUS AGENTES - AHGORA GERAL');
+    console.log('═══════════════════════════════════════════════════════\n');
+    
+    // Online
+    console.log('🟢 ONLINE (' + resultado.online.length + '):');
+    if (resultado.online.length > 0) {
+        resultado.online.forEach(agente => {
+            console.log(`   • ${agente.nome} - Chats: ${agente.chats}`);
+        });
+    } else {
+        console.log('   (nenhum agente online)');
+    }
+    console.log('');
+    
+    // Ausente
+    console.log('🟡 AUSENTE (' + resultado.ausente.length + '):');
+    if (resultado.ausente.length > 0) {
+        resultado.ausente.forEach(agente => {
+            console.log(`   • ${agente.nome} - Chats: ${agente.chats}`);
+        });
+    } else {
+        console.log('   (nenhum agente ausente)');
+    }
+    console.log('');
+    
+    // Offline/Invisível
+    console.log('⚫ OFFLINE/INVISÍVEL (' + resultado.offline.length + '):');
+    if (resultado.offline.length > 0) {
+        resultado.offline.forEach(agente => {
+            console.log(`   • ${agente.nome} - Chats: ${agente.chats}`);
+        });
+    } else {
+        console.log('   (nenhum agente offline)');
+    }
+    console.log('');
+    
+    // Resumo
+    console.log('═══════════════════════════════════════════════════════');
+    console.log(`TOTAL: ${agentes.length} agentes | Online: ${resultado.online.length} | Ausente: ${resultado.ausente.length} | Offline: ${resultado.offline.length}`);
+    console.log('═══════════════════════════════════════════════════════\n');
+    
+    // Retorna o objeto para uso programático se necessário
+    return resultado;
+})();

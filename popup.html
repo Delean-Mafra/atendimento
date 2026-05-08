@@ -28,14 +28,11 @@
             <button class="tab-btn active" data-tab="zendesk">
                 🤖 Auto Chat
             </button>
-            <button class="tab-btn" data-tab="perfil">
-                🔐 Clonar Perfil
+            <button class="tab-btn" data-tab="pontoweb">
+                🧩 Pontoweb
             </button>
             <button class="tab-btn" data-tab="agentes">
                 👥 Agentes
-            </button>
-            <button class="tab-btn" data-tab="ahgora">
-                🔗 Trocar Base
             </button>
         </nav>
 
@@ -148,9 +145,25 @@
                 </div>
             </div>
 
-            <!-- TAB 2: Clonar Perfil PontoWeb -->
-            <div id="tab-perfil" class="tab-panel">
+            <!-- TAB 2: Pontoweb (Trocar Base + Clonar Perfil) -->
+            <div id="tab-pontoweb" class="tab-panel">
                 <div class="panel-content">
+                    <!-- Trocar Base Ahgora -->
+                    <div class="input-group">
+                        <label for="codigoInput">Digite o código da empresa:</label>
+                        <input type="text" id="codigoInput" class="form-control codigo-input" placeholder="Ex: a393346" autofocus>
+                    </div>
+                    
+                    <button id="confirmarBtn" class="btn btn-primary">Confirmar</button>
+                    
+                    <div class="example-box">
+                        <strong>Exemplos: a393346</strong><br>
+                    </div>
+
+                    <div class="info-box">
+                        ℹ️ Insira o código da empresa para acessar rapidamente a página de gerenciamento.
+                    </div>
+
                     <!-- Seção de segurança para clonar perfil -->
                     <div class="security-section" id="securitySectionPerfil">
                         <label class="security-label">🔐 Código de Segurança Diário:</label>
@@ -200,27 +213,6 @@
                                 <li>Salve as alterações na página!</li>
                             </ol>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 3: Trocar Base Ahgora -->
-            <div id="tab-ahgora" class="tab-panel">
-                <div class="panel-content">
-                    <div class="input-group">
-                        <label for="codigoInput">Digite o código da empresa:</label>
-                        <input type="text" id="codigoInput" class="form-control codigo-input" placeholder="Ex: a393346" autofocus>
-                    </div>
-                    
-                    <button id="confirmarBtn" class="btn btn-primary">Confirmar</button>
-                    
-                    <div class="example-box">
-                        <strong>Exemplos:</strong><br>
-                        • a393346 → https://app.ahgora.com.br/lista_empresas?empresa=a393346
-                    </div>
-
-                    <div class="info-box">
-                        ℹ️ Insira o código da empresa para acessar rapidamente a página de gerenciamento.
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Zendesk - Cronometro Admin & Painel Flask
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.6.3
 // @author       Delean Mafra
 // @description  Sistema de Alerta de Fila + Integração com Painel Python Local
 // @match        https://*.zendesk.com/chat/agent*
@@ -14,7 +14,7 @@
 (function () {
     "use strict";
 
-    const SCRIPT_VERSION = "20.6.0"; // Variável para exibição no painel
+    const SCRIPT_VERSION = "1.6.3"; // Variável para exibição no painel
 
     /* ============================================================
      * CONFIGURAÇÃO
@@ -1164,14 +1164,6 @@
 
             if (!ticketId && !loggedMissingIds.has(visitorName)) {
                 loggedMissingIds.add(visitorName);
-
-                console.groupCollapsed(`🕵️ [Ahgora Debug] Ticket ID Pendente: ${visitorName}`);
-                console.log("O script procurou no DOM, no WebSocket atual e na Memória Persistente de Fila, mas não encontrou o ID do Ticket.");
-                if (wsVisitor) {
-                    console.log("JSON atual do Servidor Zendesk (WebSocket):", JSON.parse(JSON.stringify(wsVisitor)));
-                }
-                console.log("HTML da Linha Renderizada:", row.innerHTML);
-                console.groupEnd();
             }
 
             const base = `${agentName}|${visitorName}`;
@@ -1484,14 +1476,14 @@
     setInterval(fusionRender, CONFIG.renderIntervalMs);
 
     /* ============================================================
-     * INTEGRAÇÃO COM O PAINEL FLASK (PYTHON)
+     * INTEGRAÇÃO COM O PAINEL FLASK (PYTHON) - COM FALLBACK DE DOM
      * ============================================================ */
     function enviarDadosParaPainel() {
         const agentesAlvo = [
             "Jhonata Souza", "Fernando Cursino", "Hiago Silva",
             "Fabio Bolade", "Nathan Nunes", "Yuri Peretti",
             "Douglas Brezolin", "Carine Santos", "Julia Francischetti",
-            "Felipe Ribeiro Munari"
+            "Felipe Ribeiro Munari", "Alan Henrique"
         ];
 
         let payload = {};
@@ -1499,22 +1491,66 @@
             payload[a] = { status: 'Offline', chats_ativos: [] };
         });
 
-        // 1. Coleta o Status da barra lateral do Zendesk
+        // TENTATIVA 1: LER DO WEBSOCKET MEMÓRIA (AgentStore)
+        agentStore.forEach((agentData) => {
+            let nomeRaw = "";
+            if (agentData.display_name$string) nomeRaw = agentData.display_name$string.toLowerCase();
+            else if (agentData.full_name$string) nomeRaw = agentData.full_name$string.toLowerCase();
+            else if (agentData.first_name$string) nomeRaw = agentData.first_name$string.toLowerCase();
+
+            let agenteEncontrado = agentesAlvo.find(a => a.toLowerCase().includes(nomeRaw) || nomeRaw.includes(a.toLowerCase()));
+
+            if (agenteEncontrado) {
+                let statusRaw = agentData.status$string; // "online", "away", "invisible", "offline"
+                if (statusRaw === 'online') payload[agenteEncontrado].status = 'Online';
+                else if (statusRaw === 'away') payload[agenteEncontrado].status = 'Ausente';
+                else if (statusRaw === 'invisible') payload[agenteEncontrado].status = 'Invisível';
+            }
+        });
+
+        // TENTATIVA 2: LER DA BARRA LATERAL ESQUERDA (Caso WebSocket tenha falhado no carregamento)
         document.querySelectorAll('span').forEach(span => {
-            let nome = span.innerText.trim();
-            let agenteEncontrado = agentesAlvo.find(a => a.includes(nome) || nome.includes(a));
+            let nomeRaw = span.innerText.trim().toLowerCase();
+            let agenteEncontrado = agentesAlvo.find(a => a.toLowerCase().includes(nomeRaw) || nomeRaw.includes(a.toLowerCase()));
 
             if(agenteEncontrado) {
                 let divCor = span.previousElementSibling;
                 if(divCor && divCor.style.background) {
-                    let bg = divCor.style.background;
+                    let bg = String(divCor.style.background).toLowerCase();
                     if(bg.includes('184, 72') || bg.includes('green') || bg.includes('rgb(30, 184, 72)')) payload[agenteEncontrado].status = 'Online';
                     else if(bg.includes('241, 196, 15') || bg.includes('orange') || bg.includes('rgb(255, 178, 77)')) payload[agenteEncontrado].status = 'Ausente';
                 }
             }
         });
 
-        // 2. Lê os Chats Ativos na Tela
+        // TENTATIVA 3: LER DO MODAL "VER TUDO" (Se ele estiver no DOM da página)
+        // Isso resolve o problema de quem só aparece online na popup
+        document.querySelectorAll('.row_renderer, .meshim_dashboard_components_agentList_widgets_Row').forEach(row => {
+            let nameEl = row.querySelector('.name_cell');
+            let statusEl = row.querySelector('.status_cell span');
+
+            if (nameEl && statusEl) {
+                let nomeRaw = nameEl.innerText.trim().toLowerCase();
+                let agenteEncontrado = agentesAlvo.find(a => a.toLowerCase().includes(nomeRaw) || nomeRaw.includes(a.toLowerCase()));
+
+                if (agenteEncontrado) {
+                    let cls = statusEl.className || "";
+                    let bg = statusEl.style.background || "";
+
+                    if (cls.includes('conv_status_online') || bg.includes('green') || bg.includes('184, 72')) {
+                        if (payload[agenteEncontrado].status === 'Offline') payload[agenteEncontrado].status = 'Online';
+                    }
+                    else if (cls.includes('conv_status_away') || bg.includes('orange') || bg.includes('241, 196, 15')) {
+                        if (payload[agenteEncontrado].status === 'Offline') payload[agenteEncontrado].status = 'Ausente';
+                    }
+                    else if (cls.includes('conv_status_invisible')) {
+                        if (payload[agenteEncontrado].status === 'Offline') payload[agenteEncontrado].status = 'Invisível';
+                    }
+                }
+            }
+        });
+
+        // 4. LÊ OS CHATS ATIVOS NA TELA PRINCIPAL (Para definir TMA e Ticket)
         document.querySelectorAll('.meshim_dashboard_components_visitors_visitorList_renderers_PageList').forEach(lista => {
             let titleEl = lista.querySelector('[data-test-id="groupTitle"]');
             if(!titleEl) return;
@@ -1528,14 +1564,13 @@
                     let visitorEl = row.querySelector('[data-test-id="nameCell"]');
 
                     if (agentEl && visitorEl) {
-                        let agentNameRaw = agentEl.innerText.trim();
-                        let agenteEncontrado = agentesAlvo.find(a => a.includes(agentNameRaw) || agentNameRaw.includes(a));
+                        let agentNameRaw = agentEl.innerText.trim().toLowerCase();
+                        let agenteEncontrado = agentesAlvo.find(a => a.toLowerCase().includes(agentNameRaw) || agentNameRaw.includes(a.toLowerCase()));
 
                         if (agenteEncontrado) {
                             let visitorName = visitorEl.innerText.trim();
                             let tempo = "Calculando...";
 
-                            // Captura o tempo do seu próprio Script
                             let timeEl = row.querySelector('.ah-chat-timer-left');
                             if (timeEl && timeEl.innerText) {
                                 tempo = timeEl.innerText.trim();
@@ -1544,7 +1579,6 @@
                                 if (fallback) tempo = fallback.innerText.trim();
                             }
 
-                            // Tenta ler o ID do ticket na memória interna que seu próprio script salva
                             let ticketId = "Pendente";
                             const vId = extractVisitorIdFromDom(row);
                             if (vId && capturedTicketIds.has(vId)) {
@@ -1552,7 +1586,6 @@
                             } else if (capturedTicketIds.has(visitorName)) {
                                 ticketId = capturedTicketIds.get(visitorName);
                             } else {
-                                // Caso não esteja no cache, busca no DOM do link gerado pelo Zendesk
                                 let ticketLink = row.querySelector('a[href*="/agent/tickets/"]');
                                 if (ticketLink) {
                                     let match = ticketLink.href.match(/\/tickets\/(\d+)/);
@@ -1567,8 +1600,10 @@
                                 ticket: ticketId
                             });
 
-                            // Se encontrou chat, garante que o status mostre que ele está trabalhando
+                            // Força o status "Atendendo" apenas se encontrou um chat
                             if (payload[agenteEncontrado].status === 'Offline') {
+                                payload[agenteEncontrado].status = 'Online (Atendendo)';
+                            } else if (payload[agenteEncontrado].status === 'Online') {
                                 payload[agenteEncontrado].status = 'Online (Atendendo)';
                             }
                         }
@@ -1577,7 +1612,7 @@
             }
         });
 
-        // 3. Envia os dados para o Painel Python usando GM_xmlhttpRequest (bypassa o bloqueio CORS e HTTPS->HTTP)
+        // 5. ENVIA PARA O PAINEL PYTHON
         GM_xmlhttpRequest({
             method: "POST",
             url: "http://127.0.0.1:5000/api/atualizar",
@@ -1586,7 +1621,7 @@
             },
             data: JSON.stringify(payload),
             onload: function(response) {
-                // Silencioso - dados enviados com sucesso para o painel
+                // Sucesso silencioso
             },
             onerror: function(error) {
                 console.warn("[Painel Flask] Falha ao comunicar com http://127.0.0.1:5000/api/atualizar", error);

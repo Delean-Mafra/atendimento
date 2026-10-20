@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Zendesk - Cronometro Admin & Painel Flask (Unificado)
 // @namespace    http://tampermonkey.net/
-// @version      20.9.0
+// @version      20.9.1
 // @author       Jhonata Souza / Delean Mafra
 // @description  Base 20.7.0 (exibe só agentes da Ahgora, alertas por marcos) + envio de dados ao painel Flask local.
 // @match        https://*.zendesk.com/chat/agent*
@@ -16,7 +16,7 @@
 (function () {
     "use strict";
 
-    const SCRIPT_VERSION = "20.9.0";
+    const SCRIPT_VERSION = "20.9.1";
 
     /* ============================================================
      * CONFIGURAÇÃO - FONTE DA VERDADE
@@ -37,7 +37,7 @@
             // EQUIPE VIP
             "32790054131223", // Alan Henrique
             "26928283841559", // Hiago
-            "1730466820",     // Yuri
+            "27486743850519", // Yuri
             "28442529599255", // Felipe
             "32587092311703"  // Julia
         ],
@@ -1334,7 +1334,7 @@
         "27484755927575": "Nathan Nunes",
         "32790054131223": "Alan Henrique",
         "26928283841559": "Hiago Silva",
-        "1730466820":     "Yuri Peretti",
+        "27486743850519": "Yuri Peretti",
         "28442529599255": "Felipe Ribeiro Munari",
         "32587092311703": "Julia Francischetti"
     };

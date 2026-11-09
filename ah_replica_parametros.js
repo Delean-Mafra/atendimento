@@ -6,6 +6,8 @@
 // @author       Delean Mafra
 // @match        *://*.ahgora.com.br/*
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/ah_replica_parametros.js
+// @downloadURL  https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/ah_replica_parametros.js
 // ==UserScript==
 
 (function() {

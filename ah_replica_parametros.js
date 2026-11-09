@@ -4,7 +4,8 @@
 // @version      2.0
 // @description  Copia, replica, exporta e importa parâmetros de perfis e empresas.
 // @author       Delean Mafra
-// @match        *://*.ahgora.com.br/*
+// @match        https://app.ahgora.com.br/teste/aplica_regras*
+// @match        https://app.ahgora.com.br/admin/acesso_empresa*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/ah_replica_parametros.js
 // @downloadURL  https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/ah_replica_parametros.js

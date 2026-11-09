@@ -6,7 +6,10 @@
 // @author       Delean Mafra
 // @match        https://totvssuporte.zendesk.com/agent/*
 // @grant        none
-// ==UserScript==
+// @updateURL    https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/Ahgora_Tools_Zendesk_Simplificado.user.js
+// @downloadURL  https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/Ahgora_Tools_Zendesk_Simplificado.user.js
+// @grant        none
+// ==/UserScript==
 
 (function () {
     'use strict';

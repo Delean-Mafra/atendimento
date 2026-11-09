@@ -4,12 +4,12 @@
 // @version      2.0
 // @description  Copia, replica, exporta e importa parâmetros de perfis e empresas.
 // @author       Delean Mafra
-// @match        https://app.ahgora.com.br/teste/aplica_regras*
-// @match        https://app.ahgora.com.br/admin/acesso_empresa*
+// @match        *://*.ahgora.com.br/*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/ah_replica_parametros.user.js
-// @downloadURL  https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/ah_replica_parametros.user.js
-// ==UserScript==
+// @icon         https://play-lh.googleusercontent.com/JYdMLNn1K2lmRlCZJ4g-7zGVsjm8ZLFJ2wV5uUufAEvsA3KZSuswfMxgzJuIM31ZusGqLFkjVANGQ4RCUCcihA=w240-h480-rw
+// @updateURL    https://gist.githubusercontent.com/Delean-Mafra/69399c18b27f77909524877472f5033d/raw/ah_replica_parametros.user.js
+// @downloadURL  https://gist.githubusercontent.com/Delean-Mafra/69399c18b27f77909524877472f5033d/raw/ah_replica_parametros.user.js
+// ==/UserScript==
 
 (function() {
     'use strict';
@@ -202,7 +202,6 @@
             </div>
         `;
 
-        // Insere o painel logo abaixo do cabeçalho do nome da empresa
         insertTarget.insertAdjacentElement('afterend', painelEl);
 
         document.getElementById('tm-btn-copy-params').addEventListener('click', () => {

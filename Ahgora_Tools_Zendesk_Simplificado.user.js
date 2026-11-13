@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ahgora Tools - Zendesk Simplificado
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Adiciona pesquisa de empresa e cópia rápida de ticket no Zendesk.
 // @author       Delean Mafra
 // @match        https://totvssuporte.zendesk.com/agent/*
@@ -100,159 +100,139 @@
     }
 
     function criarCaixaPesquisa() {
+        // Encontra TODOS os menus de navegação de tickets (abas visíveis e ocultas)
         const navs = document.querySelectorAll('.pane.left.allow-overflow nav');
-        let nav = null;
+        if (navs.length === 0) return;
 
-        // Procura qual 'nav' de ticket está visível na tela no momento
-        for (const item of navs) {
-            const rect = item.getBoundingClientRect();
-            const style = window.getComputedStyle(item);
-            const visivel = rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden';
-            if (visivel) {
-                nav = item;
-                break;
+        // Itera sobre cada ticket aberto no Zendesk
+        navs.forEach(nav => {
+            // Se já injetamos o widget NESTE ticket específico, não faz nada
+            if (nav.querySelector('.ahgora-empresa-widget')) {
+                return;
             }
-        }
-
-        // Fallback caso não consiga validar visibilidade mas exista o nav
-        if (!nav && navs.length > 0) nav = navs[0];
-        
-        if (!nav) return false;
-        
-        const widgetExistente = document.getElementById('ahgora-empresa-search-container');
-        if (widgetExistente) {
-            // Se o widget já existe mas a aba mudou (o nav visível é diferente), move o widget para o novo nav
-            if (widgetExistente.parentElement !== nav) {
-                nav.appendChild(widgetExistente);
-            }
-            return true;
-        }
-        
-        const widgetContainer = document.createElement('span');
-        widgetContainer.id = 'ahgora-empresa-search-container';
-        widgetContainer.className = 'ember-view btn ahgora-empresa-widget';
-        widgetContainer.style.cssText = `
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
-            margin-left: auto;
-            cursor: default;
-        `;
-        
-        const label = document.createElement('label');
-        label.textContent = '🏢';
-        label.style.cssText = `
-            color: #60747D;
-            font-weight: bold;
-            font-size: 14px;
-            white-space: nowrap;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            cursor: default;
-        `;
-        
-        const input = document.createElement('input');
-        input.id = 'ahgora-empresa-input';
-        input.type = 'text';
-        input.placeholder = 'a123456';
-        input.maxLength = '7';
-        input.style.cssText = `
-            padding: 4px 8px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            font-size: 11px;
-            font-family: Arial, sans-serif;
-            width: 70px;
-            outline: none;
-            transition: all 0.2s;
-        `;
-        
-        input.addEventListener('focus', function() {
-            this.style.borderColor = '#667eea';
-            this.style.boxShadow = '0 0 0 2px rgba(102, 126, 234, 0.15)';
-        });
-        
-        input.addEventListener('blur', function() {
-            this.style.borderColor = '#ddd';
-            this.style.boxShadow = 'none';
-        });
-        
-        const botao = document.createElement('button');
-        botao.id = 'ahgora-empresa-btn';
-        botao.textContent = '🔍';
-        botao.type = 'button';
-        botao.style.cssText = `
-            padding: 4px 8px;
-            background: white;
-            color: #60747D;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            font-weight: bold;
-            font-size: 11px;
-            font-family: Arial, sans-serif;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 24px;
-            height: 24px;
-        `;
-        
-        botao.addEventListener('mouseenter', function() {
-            this.style.background = '#f0f0f0';
-            this.style.borderColor = '#667eea';
-        });
-        
-        botao.addEventListener('mouseleave', function() {
-            this.style.background = 'white';
-            this.style.borderColor = '#ddd';
-        });
-        
-        botao.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const codigo = input.value;
-            if (codigo) {
-                if (abrirEmpresaAhgora(codigo)) {
-                    input.value = '';
-                    input.focus();
+            
+            // Cria um widget novo exclusivo para esta aba
+            const widgetContainer = document.createElement('span');
+            widgetContainer.className = 'ember-view btn ahgora-empresa-widget';
+            widgetContainer.style.cssText = `
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 12px;
+                margin-left: auto;
+                cursor: default;
+            `;
+            
+            const label = document.createElement('label');
+            label.textContent = '🏢';
+            label.style.cssText = `
+                color: #60747D;
+                font-weight: bold;
+                font-size: 14px;
+                white-space: nowrap;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                cursor: default;
+            `;
+            
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'a123456';
+            input.maxLength = '7';
+            input.className = 'ahgora-empresa-input';
+            input.style.cssText = `
+                padding: 4px 8px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                font-size: 11px;
+                font-family: Arial, sans-serif;
+                width: 70px;
+                outline: none;
+                transition: all 0.2s;
+            `;
+            
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#667eea';
+                this.style.boxShadow = '0 0 0 2px rgba(102, 126, 234, 0.15)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = '#ddd';
+                this.style.boxShadow = 'none';
+            });
+            
+            const botao = document.createElement('button');
+            botao.textContent = '🔍';
+            botao.type = 'button';
+            botao.className = 'ahgora-empresa-btn';
+            botao.style.cssText = `
+                padding: 4px 8px;
+                background: white;
+                color: #60747D;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 11px;
+                font-family: Arial, sans-serif;
+                cursor: pointer;
+                transition: all 0.2s;
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 24px;
+                height: 24px;
+            `;
+            
+            botao.addEventListener('mouseenter', function() {
+                this.style.background = '#f0f0f0';
+                this.style.borderColor = '#667eea';
+            });
+            
+            botao.addEventListener('mouseleave', function() {
+                this.style.background = 'white';
+                this.style.borderColor = '#ddd';
+            });
+            
+            botao.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const codigo = input.value;
+                if (codigo) {
+                    if (abrirEmpresaAhgora(codigo)) {
+                        input.value = '';
+                        input.focus();
+                    }
+                } else {
+                    mostrarNotificacao('⚠️ Digite o código da empresa!', 'warning');
                 }
-            } else {
-                mostrarNotificacao('⚠️ Digite o código da empresa!', 'warning');
-            }
+            });
+            
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') botao.click();
+            });
+            
+            widgetContainer.appendChild(label);
+            widgetContainer.appendChild(input);
+            widgetContainer.appendChild(botao);
+            
+            nav.appendChild(widgetContainer);
         });
-        
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') botao.click();
-        });
-        
-        widgetContainer.appendChild(label);
-        widgetContainer.appendChild(input);
-        widgetContainer.appendChild(botao);
-        
-        nav.appendChild(widgetContainer);
-        return true;
     }
 
     function iniciarSearchEmpresa() {
-        // Tenta criar imediatamente
         criarCaixaPesquisa();
 
         let debounce = null;
         const observer = new MutationObserver(() => {
-            // Limpa o timer anterior para não executar várias vezes seguidas se o Zendesk carregar muitas coisas
             clearTimeout(debounce);
             
-            // Aguarda 300ms após o DOM parar de mudar para reposicionar a caixa
+            // Garante que nossa função sempre varra os tickets criados na interface
             debounce = setTimeout(() => {
                 criarCaixaPesquisa();
             }, 300);
         });
         
-        // Mantém observando o body o tempo todo. Não tem mais observer.disconnect().
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
@@ -302,14 +282,12 @@
             const target = event.target;
             if (!(target instanceof Element)) return;
             
-            // Busca a célula da tabela que contém o ID do ticket
             const celulaTicket = target.closest('td[data-test-id="generic-table-cells-id"], [data-test-id="generic-table-cells-id"]');
             if (!celulaTicket) return;
             
             const numeroTicket = extrairNumeroTicket(celulaTicket.textContent);
             if (!numeroTicket) return;
 
-            // Bloqueia a ação padrão (abrir o ticket) para permitir apenas a cópia
             event.preventDefault();
             event.stopPropagation();
             event.stopImmediatePropagation();
@@ -321,7 +299,7 @@
                     mostrarNotificacao('❌ Não foi possível copiar o ticket.', 'error');
                 }
             });
-        }, true); // Use capture phase para interceptar antes de abrir a aba
+        }, true);
     }
 
     // Inicialização

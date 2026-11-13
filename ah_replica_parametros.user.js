@@ -7,8 +7,8 @@
 // @match        *://*.ahgora.com.br/*
 // @grant        none
 // @icon         https://play-lh.googleusercontent.com/JYdMLNn1K2lmRlCZJ4g-7zGVsjm8ZLFJ2wV5uUufAEvsA3KZSuswfMxgzJuIM31ZusGqLFkjVANGQ4RCUCcihA=w240-h480-rw
-// @updateURL    https://gist.githubusercontent.com/Delean-Mafra/69399c18b27f77909524877472f5033d/raw/ah_replica_parametros.user.js
-// @downloadURL  https://gist.githubusercontent.com/Delean-Mafra/69399c18b27f77909524877472f5033d/raw/ah_replica_parametros.user.js
+// @updateURL    https://github.com/Delean-Mafra/atendimento/raw/refs/heads/main/ah_replica_parametros.user.js
+// @downloadURL  https://github.com/Delean-Mafra/atendimento/raw/refs/heads/main/ah_replica_parametros.user.js
 // ==/UserScript==
 
 (function() {

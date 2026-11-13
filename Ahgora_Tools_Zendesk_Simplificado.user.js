@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Ahgora Tools - Zendesk Simplificado
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Adiciona pesquisa de empresa e cópia rápida de ticket no Zendesk.
 // @author       Delean Mafra
 // @match        https://totvssuporte.zendesk.com/agent/*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/Ahgora_Tools_Zendesk_Simplificado.user.js
 // @downloadURL  https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/Ahgora_Tools_Zendesk_Simplificado.user.js
-// @grant        none
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=zendesk.com
 // ==/UserScript==
 
 (function () {
@@ -103,6 +103,7 @@
         const navs = document.querySelectorAll('.pane.left.allow-overflow nav');
         let nav = null;
 
+        // Procura qual 'nav' de ticket está visível na tela no momento
         for (const item of navs) {
             const rect = item.getBoundingClientRect();
             const style = window.getComputedStyle(item);
@@ -113,13 +114,17 @@
             }
         }
 
+        // Fallback caso não consiga validar visibilidade mas exista o nav
         if (!nav && navs.length > 0) nav = navs[0];
         
         if (!nav) return false;
         
         const widgetExistente = document.getElementById('ahgora-empresa-search-container');
         if (widgetExistente) {
-            if (widgetExistente.parentElement !== nav) nav.appendChild(widgetExistente);
+            // Se o widget já existe mas a aba mudou (o nav visível é diferente), move o widget para o novo nav
+            if (widgetExistente.parentElement !== nav) {
+                nav.appendChild(widgetExistente);
+            }
             return true;
         }
         
@@ -233,17 +238,21 @@
     }
 
     function iniciarSearchEmpresa() {
-        if (criarCaixaPesquisa()) return;
+        // Tenta criar imediatamente
+        criarCaixaPesquisa();
 
-        let tentativaAgendada = null;
+        let debounce = null;
         const observer = new MutationObserver(() => {
-            if (tentativaAgendada) return;
-            tentativaAgendada = setTimeout(() => {
-                tentativaAgendada = null;
-                if (criarCaixaPesquisa()) observer.disconnect();
+            // Limpa o timer anterior para não executar várias vezes seguidas se o Zendesk carregar muitas coisas
+            clearTimeout(debounce);
+            
+            // Aguarda 300ms após o DOM parar de mudar para reposicionar a caixa
+            debounce = setTimeout(() => {
+                criarCaixaPesquisa();
             }, 300);
         });
         
+        // Mantém observando o body o tempo todo. Não tem mais observer.disconnect().
         observer.observe(document.body, { childList: true, subtree: true });
     }
 

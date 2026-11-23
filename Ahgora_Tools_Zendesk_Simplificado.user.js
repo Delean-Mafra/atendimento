@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Ahgora Tools - Zendesk Simplificado
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  Adiciona pesquisa de empresa e cópia rápida de ticket no Zendesk.
 // @author       Delean Mafra
-// @match        https://totvssuporte.zendesk.com/agent/*
+// @match        https://*.zendesk.com/agent/*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/Ahgora_Tools_Zendesk_Simplificado.user.js
 // @downloadURL  https://raw.githubusercontent.com/Delean-Mafra/atendimento/refs/heads/main/Ahgora_Tools_Zendesk_Simplificado.user.js
@@ -30,12 +30,12 @@
 
     function abrirEmpresaAhgora(codigo) {
         const codigoLower = codigo.toLowerCase().trim();
-        
+
         if (!validarCodigoEmpresa(codigoLower)) {
             mostrarNotificacao('❌ Formato inválido! Use: a123456', 'error');
             return false;
         }
-        
+
         const url = `https://app.ahgora.com.br/lista_empresas?empresa=${codigoLower}`;
         window.open(url, '_blank');
         mostrarNotificacao(`✅ Abrindo: ${codigoLower}`, 'success');
@@ -45,7 +45,7 @@
     function mostrarNotificacao(mensagem, tipo = 'success') {
         const notificacao = document.createElement('div');
         notificacao.textContent = mensagem;
-        
+
         let backgroundColor;
         switch(tipo) {
             case 'success': backgroundColor = '#28a745'; break;
@@ -54,7 +54,7 @@
             case 'error': backgroundColor = '#dc3545'; break;
             default: backgroundColor = '#28a745';
         }
-        
+
         notificacao.style.cssText = `
             position: fixed;
             bottom: 20px;
@@ -101,7 +101,7 @@
 
     function criarCaixaPesquisa() {
         // Encontra TODOS os menus de navegação de tickets (abas visíveis e ocultas)
-        const navs = document.querySelectorAll('.pane.left.allow-overflow nav');
+        const navs = document.querySelectorAll('.pane.left.allow-overflow nav, nav[aria-label="Localização da página do ticket"]');
         if (navs.length === 0) return;
 
         // Itera sobre cada ticket aberto no Zendesk
@@ -110,7 +110,7 @@
             if (nav.querySelector('.ahgora-empresa-widget')) {
                 return;
             }
-            
+
             // Cria um widget novo exclusivo para esta aba
             const widgetContainer = document.createElement('span');
             widgetContainer.className = 'ember-view btn ahgora-empresa-widget';
@@ -122,7 +122,7 @@
                 margin-left: auto;
                 cursor: default;
             `;
-            
+
             const label = document.createElement('label');
             label.textContent = '🏢';
             label.style.cssText = `
@@ -134,7 +134,7 @@
                 margin: 0;
                 cursor: default;
             `;
-            
+
             const input = document.createElement('input');
             input.type = 'text';
             input.placeholder = 'a123456';
@@ -150,17 +150,17 @@
                 outline: none;
                 transition: all 0.2s;
             `;
-            
+
             input.addEventListener('focus', function() {
                 this.style.borderColor = '#667eea';
                 this.style.boxShadow = '0 0 0 2px rgba(102, 126, 234, 0.15)';
             });
-            
+
             input.addEventListener('blur', function() {
                 this.style.borderColor = '#ddd';
                 this.style.boxShadow = 'none';
             });
-            
+
             const botao = document.createElement('button');
             botao.textContent = '🔍';
             botao.type = 'button';
@@ -183,17 +183,17 @@
                 min-width: 24px;
                 height: 24px;
             `;
-            
+
             botao.addEventListener('mouseenter', function() {
                 this.style.background = '#f0f0f0';
                 this.style.borderColor = '#667eea';
             });
-            
+
             botao.addEventListener('mouseleave', function() {
                 this.style.background = 'white';
                 this.style.borderColor = '#ddd';
             });
-            
+
             botao.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -207,15 +207,15 @@
                     mostrarNotificacao('⚠️ Digite o código da empresa!', 'warning');
                 }
             });
-            
+
             input.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') botao.click();
             });
-            
+
             widgetContainer.appendChild(label);
             widgetContainer.appendChild(input);
             widgetContainer.appendChild(botao);
-            
+
             nav.appendChild(widgetContainer);
         });
     }
@@ -226,13 +226,13 @@
         let debounce = null;
         const observer = new MutationObserver(() => {
             clearTimeout(debounce);
-            
+
             // Garante que nossa função sempre varra os tickets criados na interface
             debounce = setTimeout(() => {
                 criarCaixaPesquisa();
             }, 300);
         });
-        
+
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
@@ -278,13 +278,13 @@
             if (!event.isTrusted) return;
             if (event.button !== 0) return; // Apenas botão esquerdo
             if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-            
+
             const target = event.target;
             if (!(target instanceof Element)) return;
-            
+
             const celulaTicket = target.closest('td[data-test-id="generic-table-cells-id"], [data-test-id="generic-table-cells-id"]');
             if (!celulaTicket) return;
-            
+
             const numeroTicket = extrairNumeroTicket(celulaTicket.textContent);
             if (!numeroTicket) return;
 

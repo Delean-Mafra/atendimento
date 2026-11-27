@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Ahgora Tools - Zendesk Simplificado
 // @namespace    http://tampermonkey.net/
-// @version      1.3
-// @description  Adiciona pesquisa de empresa e cópia rápida de ticket no Zendesk.
+// @version      1.4
+// @description  Adiciona pesquisa de empresa, cópia rápida de ticket e observação interna automática ao fundir tickets no Zendesk.
 // @author       Delean Mafra
 // @match        https://*.zendesk.com/agent/*
 // @grant        none
@@ -220,22 +220,6 @@
         });
     }
 
-    function iniciarSearchEmpresa() {
-        criarCaixaPesquisa();
-
-        let debounce = null;
-        const observer = new MutationObserver(() => {
-            clearTimeout(debounce);
-
-            // Garante que nossa função sempre varra os tickets criados na interface
-            debounce = setTimeout(() => {
-                criarCaixaPesquisa();
-            }, 300);
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-    }
-
     // ============================================
     // 2. COPIAR TICKET NA LISTA (CLIQUE DIRETO)
     // ============================================
@@ -302,14 +286,200 @@
         }, true);
     }
 
-    // Inicialização
+    // ============================================
+    // 3. OBSERVAÇÃO INTERNA AUTOMÁTICA AO FUNDIR
+    // ============================================
+    const SELETORES_VISIBILIDADE_FUSAO = [
+        '[data-test-id="merge-drawer-source-visibility"]',
+        '[data-test-id="merge-drawer-target-visibility"]'
+    ];
+
+    let processandoFusao = false;
+
+    function esperar(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function normalizarTexto(texto) {
+        return (texto || '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function jaEstaInterno(wrapper) {
+        const valorEl = wrapper.querySelector('[data-garden-id="dropdowns.combobox.value"]');
+        const inputEl = wrapper.querySelector('input[data-garden-id="dropdowns.combobox.input"]');
+        const texto = normalizarTexto(`${valorEl ? valorEl.textContent : ''} ${inputEl ? inputEl.value : ''}`);
+
+        return texto.includes('observacao interna') || texto.includes('internal note') || texto.includes('nota interna');
+    }
+
+    async function alterarDropdownParaInterno(wrapper) {
+        if (!wrapper || wrapper.dataset.ahgoraAutoInterno === 'true') {
+            return false;
+        }
+
+        // Se já estiver como Observação interna, apenas marca como concluído
+        if (jaEstaInterno(wrapper)) {
+            wrapper.dataset.ahgoraAutoInterno = 'true';
+            return false;
+        }
+
+        // Limite de segurança para evitar loops caso o campo não possa ser alterado
+        const tentativas = Number(wrapper.dataset.ahgoraTentativas || '0');
+        if (tentativas >= 3) {
+            return false;
+        }
+        wrapper.dataset.ahgoraTentativas = String(tentativas + 1);
+
+        const trigger = wrapper.querySelector('[data-garden-id="dropdowns.combobox.trigger"], [role="combobox"]');
+        if (!trigger || trigger.getAttribute('aria-disabled') === 'true') {
+            wrapper.dataset.ahgoraAutoInterno = 'true';
+            return false;
+        }
+
+        // 1. Abre o combobox caso esteja fechado
+        if (trigger.getAttribute('aria-expanded') !== 'true') {
+            trigger.click();
+            await esperar(60);
+
+            // Fallback via teclado caso o clique simples não expanda na primeira tentativa
+            if (trigger.getAttribute('aria-expanded') !== 'true') {
+                trigger.focus();
+                trigger.dispatchEvent(new KeyboardEvent('keydown', {
+                    key: 'ArrowDown',
+                    code: 'ArrowDown',
+                    keyCode: 40,
+                    which: 40,
+                    bubbles: true,
+                    cancelable: true
+                }));
+                await esperar(60);
+            }
+        }
+
+        // 2. Aguarda a lista de opções ser renderizada pelo Zendesk
+        const listboxId = trigger.getAttribute('aria-controls');
+        let opcoes = [];
+
+        for (let i = 0; i < 8; i++) {
+            const listbox = (listboxId ? document.getElementById(listboxId) : null) || wrapper.querySelector('[role="listbox"]');
+            if (listbox) {
+                opcoes = Array.from(listbox.querySelectorAll('[role="option"]'));
+                if (opcoes.length === 0) {
+                    opcoes = Array.from(listbox.querySelectorAll('li'));
+                }
+                if (opcoes.length > 0) break;
+            }
+            await esperar(40);
+        }
+
+        // 3. Procura e seleciona "Observação interna"
+        const opcaoInterna = opcoes.find(opt => {
+            const txt = normalizarTexto(opt.textContent);
+            return txt.includes('observacao interna') || txt.includes('internal note') || txt.includes('nota interna');
+        });
+
+        if (opcaoInterna) {
+            opcaoInterna.dispatchEvent(new MouseEvent('mousemove', { bubbles: true, cancelable: true }));
+            opcaoInterna.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            opcaoInterna.dispatchEvent(new MouseEvent('mouseup', { bubbles: true, cancelable: true }));
+            opcaoInterna.click();
+            await esperar(60);
+        }
+
+        if (jaEstaInterno(wrapper)) {
+            wrapper.dataset.ahgoraAutoInterno = 'true';
+            return true;
+        }
+
+        // Fecha o menu caso tenha ficado aberto sem selecionar
+        if (trigger.getAttribute('aria-expanded') === 'true') {
+            trigger.dispatchEvent(new KeyboardEvent('keydown', {
+                key: 'Escape',
+                code: 'Escape',
+                keyCode: 27,
+                which: 27,
+                bubbles: true,
+                cancelable: true
+            }));
+        }
+
+        return false;
+    }
+
+    async function verificarVisibilidadeFusao() {
+        if (processandoFusao) return;
+
+        const pendentes = SELETORES_VISIBILIDADE_FUSAO
+            .map(sel => document.querySelector(sel))
+            .filter(el => el && el.dataset.ahgoraAutoInterno !== 'true');
+
+        if (pendentes.length === 0) return;
+
+        processandoFusao = true;
+        let alterouAlgum = false;
+
+        try {
+            // Processa um seletor por vez para que a abertura de um não feche o outro
+            for (const wrapper of pendentes) {
+                const alterou = await alterarDropdownParaInterno(wrapper);
+                if (alterou) {
+                    alterouAlgum = true;
+                }
+            }
+
+            if (alterouAlgum) {
+                mostrarNotificacao('🔒 Comentários da fusão alterados para Observação interna!', 'info');
+            }
+        } finally {
+            processandoFusao = false;
+        }
+    }
+
+    // ============================================
+    // OBSERVADORES E INICIALIZAÇÃO
+    // ============================================
+    function iniciarObservadores() {
+        criarCaixaPesquisa();
+        verificarVisibilidadeFusao();
+
+        let debounceSearch = null;
+        let debounceFusao = null;
+
+        const observer = new MutationObserver(() => {
+            clearTimeout(debounceSearch);
+            debounceSearch = setTimeout(() => {
+                criarCaixaPesquisa();
+            }, 300);
+
+            clearTimeout(debounceFusao);
+            debounceFusao = setTimeout(() => {
+                verificarVisibilidadeFusao();
+            }, 80);
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Acelera a verificação logo após clicar no botão "Avançar" da fusão
+        document.addEventListener('click', function(event) {
+            if (!(event.target instanceof Element)) return;
+            const botaoAvancar = event.target.closest('button[data-test-id="merge-drawer-next-button"]');
+            if (botaoAvancar) {
+                setTimeout(verificarVisibilidadeFusao, 120);
+                setTimeout(verificarVisibilidadeFusao, 350);
+            }
+        }, true);
+    }
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            iniciarSearchEmpresa();
+            iniciarObservadores();
             interceptarCliqueTicketLista();
         });
     } else {
-        iniciarSearchEmpresa();
+        iniciarObservadores();
         interceptarCliqueTicketLista();
     }
 })();
